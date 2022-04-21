@@ -1,0 +1,163 @@
+.treeTv-appbar {
+    min-height: var(--appbar-height);
+    background: var(--primary-color);
+    user-select: none;
+}
+
+.treeTv-appbar img {
+    width: 3rem;
+}
+
+.treeTv-appbar-filler {
+    margin-top: var(--appbar-height);
+}
+
+.appbar-hero,
+.treeTv-appbar-menu {
+    margin: 0 1rem;
+    padding: unset;
+    flex-basis: content;
+}
+
+.treeTv-search {
+    outline: none;
+    background: var(--light) url("../Images/search.svg") no-repeat 1rem center;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    padding-left: 3.13rem;
+}
+
+.treeTv-search:focus {
+    color: var(--dark);
+    cursor: auto;
+}
+
+.search-box {
+    cursor: pointer;
+    margin: 0 auto;
+    width: 3.13rem;
+    height: 3.13rem;
+    border-radius: 5px;
+    flex-basis: 3.13rem;
+    transition: var(--transition);
+    outline: 1px solid var(--accent-color);
+}
+
+.search-box:focus-within {
+    flex-basis: 57%;
+    box-shadow: 0 0 5px var(--accent-color);
+    transition: var(--transition);
+}
+
+.treeTv-search::-webkit-search-cancel-button,
+.treeTv-search::-webkit-search-results-button,
+.treeTv-search::-webkit-search-results-decoration,
+.treeTv-search::-webkit-search-decoration {
+    display: none;
+}
+
+.drawer {
+    transform: translate(-100%);
+    position: absolute;
+    inset: var(--appbar-height) 0 0;
+    background: var(--accent-color);
+    width: 100vw;
+    height: calc(100vh - var(--appbar-height));
+    transition: var(--transition), background-color 0s;
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: capitalize;
+    z-index: 1;
+}
+
+.drawer-open {
+    transform: translate(0%);
+}
+
+.drawer-open .tooltiptext{
+    font-weight: 600;
+    color: var(--light);
+}
+
+.treeTv-appbar a,
+.treeTv-appbar button {
+    color: var(--dark);
+}
+
+.tooltip {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0.4rem;
+}
+
+@media (min-width: 650px) {
+    .treeTv-search {
+        cursor: auto;
+    }
+
+    .drawer {
+        transform: translate(0%);
+        position: static;
+        width: auto;
+        height: var(--appbar-height);
+        background: var(--primary-color);
+        margin-right: 1rem;
+    }
+
+    .drawer > ul {
+        flex-direction: row;
+    }
+
+    .search-box {
+        height: 2.5rem;
+        flex-basis: 25%;
+        position: relative;
+    }
+
+    .search-box:focus-within {
+        flex-basis: 30%;
+    }
+
+    .tooltip {
+        justify-content: center;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: max-content;
+        background-color: var(--primary-text-color);
+        color: var(--primary-bg-color);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        font-weight: 900;
+        z-index: 1;
+        top: 130%;
+        opacity: 0;
+        transition: var(--transition);
+        border: 1px solid var(--primary-bg-color);
+    }
+
+    .tooltip .tooltiptext::after {
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        content: "";
+        position: absolute;
+        right: 100%;
+        border: 5px solid transparent;
+        border-bottom-color: var(--primary-text-color);
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+}

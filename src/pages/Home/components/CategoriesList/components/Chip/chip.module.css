@@ -1,0 +1,16 @@
+.chip {
+    background-color: var(--accent-color);
+    padding: 0.3rem 1rem;
+    white-space: nowrap;
+    border-radius: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    color: var(--light);
+    user-select: none;
+    text-transform: capitalize;
+}
+
+.chip-active {
+    background-color: var(--primary-color);
+    color: var(--dark);
+}

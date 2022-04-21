@@ -1,0 +1,5 @@
+export const filterConstants = {
+    INITIALISE: "INITIALISE",
+    SELECT_CATEGORY: "SELECT_CATEGORY",
+    ALL_CATEGORY: "ALL_CATEGORY",
+};

@@ -1,0 +1,25 @@
+.categories-container {
+    display: flex;
+    align-items: center;
+}
+
+.chip-box {
+    scrollbar-width: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+}
+
+.chip-box::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-btn {
+    height: 100%;
+    color: var(--primary-text-color);
+    background: var(--primary-bg-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+}

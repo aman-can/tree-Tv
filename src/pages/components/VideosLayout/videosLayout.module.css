@@ -1,0 +1,11 @@
+.videos-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    grid-gap: 1.5rem;
+    padding: 1.5rem;
+    grid-auto-flow: row;
+    align-content: flex-start;
+    justify-items: center;
+    align-items: flex-start;
+    min-height: calc(100vh - var(--appbar-height));
+}
