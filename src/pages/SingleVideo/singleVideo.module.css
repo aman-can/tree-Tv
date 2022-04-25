@@ -1,0 +1,52 @@
+.single-video-container {
+    padding: 0.5rem;
+    height: 100%;
+}
+
+.video-suggestion-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.suggestions-box {
+    scrollbar-width: none;
+    flex-shrink: 2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    order: 1;
+}
+
+.suggestions-box::-webkit-scrollbar{
+    display: none;
+}
+
+.comments-section {
+    padding: 1rem 2rem 0 2rem;
+    width: 100%;
+}
+
+.suggestions-box > * {
+    min-width: 100%;
+}
+
+@media (min-width: 650px) {
+    .suggestions-box > * {
+        min-width: 21rem;
+    }
+
+    .suggestions-box {
+        order: 0;
+        flex-direction: row;
+        overflow: auto;
+    }
+
+    .single-video-container {
+        padding: 1rem;
+    }
+}

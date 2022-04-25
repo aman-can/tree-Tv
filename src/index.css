@@ -7,6 +7,7 @@
     overflow-x: hidden;
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
+    min-height: 100vh;
 }
 
 #dark {
@@ -38,8 +39,13 @@
     scrollbar-color: var(--teal-600) var(--light);
 }
 
+button {
+    user-select: none;
+}
+
 ::selection {
     background-color: var(--teal-100);
+    color: var(--dark);
 }
 
 ::-webkit-scrollbar {

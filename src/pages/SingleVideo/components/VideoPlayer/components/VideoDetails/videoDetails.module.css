@@ -1,0 +1,27 @@
+.desc-btns {
+    background: inherit;
+    align-items: center;
+    position: static;
+}
+
+.desc-btns button {
+    color: var(--primary-text-color);
+    border-radius: 5px;
+    padding-block: 0;
+}
+
+.video-details {
+    background: inherit;
+    border: none;
+    min-width: 100%;
+}
+
+.video-details ~ span {
+    border-color: var(--primary-text-color);
+}
+
+@media (min-width: 650px) {
+    .desc-btns {
+        position: absolute;
+    }
+}
