@@ -9,6 +9,7 @@ export { Playlist } from "./Playlist";
 export { Linkedin } from "./Linkedin";
 export { DarkMode } from "./DarkMode";
 export { MenuOpen } from "./MenuOpen";
+export { Comments } from "./Comments";
 export { History } from "./History";
 export { Profile } from "./Profile";
 export { Twitter } from "./Twitter";

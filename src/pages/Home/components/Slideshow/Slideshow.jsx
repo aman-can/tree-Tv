@@ -10,7 +10,6 @@ export const Slideshow = () => {
 
     let imgURLs = filterState.initialData.map((ele) => ele._id);
     imgURLs = [imgURLs[3], imgURLs[4], imgURLs[5], imgURLs[6]];
-    console.log(imgURLs);
 
     const [index, setIndex] = useState(0);
     const timeoutRef = useRef(null);

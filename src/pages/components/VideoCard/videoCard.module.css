@@ -1,8 +1,10 @@
 .treeTv-video-card {
-    max-width: 21rem;
     background: var(--card-color);
+    max-width: 21rem;
+    min-width: 21rem;
     border: unset;
     box-shadow: var(--card-box-color);
+    transition: var(--transition);
     user-select: none;
 }
 
@@ -17,11 +19,6 @@
 }
 
 .treeTv-video-card img {
-    transition: var(--transition);
-}
-
-.treeTv-video-card:hover img {
-    transform: scale(1.1);
     transition: var(--transition);
 }
 
@@ -57,10 +54,20 @@
 }
 
 @media (min-width: 650px) {
+    .treeTv-video-card.card-can-hover:hover {
+        transform: scale(1.1);
+        transition: var(--transition);
+    }
+
+    .treeTv-video-card:hover img {
+        transform: scale(1.1);
+        transition: var(--transition);
+    }
+
     .treeTv-video-actions button {
         background: var(--card-overlay-color);
     }
-    
+
     .treeTv-video-actions button:hover {
         background: var(--primary-bg-color);
     }

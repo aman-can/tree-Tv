@@ -1,0 +1,19 @@
+.player-container {
+    flex-grow: 1;
+    aspect-ratio: 16/9;
+    max-height: calc(100vh - 7rem);
+    flex-basis: 70%;
+}
+
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    margin-bottom: 1rem;
+    height: 100%;
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

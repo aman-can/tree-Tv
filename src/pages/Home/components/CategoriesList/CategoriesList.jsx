@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import axios from "axios";
+import { useDraggable } from "react-use-draggable-scroll";
 import styles from "./categoriesList.module.css";
 import { LeftArrow, RightArrow } from "../../../../icons";
 import { Chip } from "./components";
 
 export const CategoriesList = () => {
     const categoriesRef = useRef();
+    const { events } = useDraggable(categoriesRef);
     const [scrollX, setscrollX] = useState(0);
     const [scrolEnd, setscrolEnd] = useState(false);
     const [categories, setCategories] = useState([]);
@@ -66,6 +68,7 @@ export const CategoriesList = () => {
                 </span>
             )}
             <div
+                {...events}
                 ref={categoriesRef}
                 className={`${styles["chip-box"]} horizontal-list`}
                 onScroll={scrollCheck}

@@ -11,17 +11,17 @@ import { Response } from "miragejs";
  * */
 
 export const getAllVideosHandler = function () {
-  try {
-    return new Response(200, {}, { videos: this.db.videos });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
+    try {
+        return new Response(200, {}, { videos: this.db.videos });
+    } catch (error) {
+        return new Response(
+            500,
+            {},
+            {
+                error,
+            }
+        );
+    }
 };
 
 /**
@@ -37,17 +37,35 @@ export const getAllVideosHandler = function () {
  * */
 
 export const getVideoHandler = function (schema, request) {
-  const { videoId } = request.params;
-  try {
-    const video = schema.videos.findBy({ _id: videoId }).attrs;
-    return new Response(200, {}, { video });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
+    const { videoId, suggestionLimit } = request.params;
+    try {
+        const video = schema.videos.findBy({ _id: videoId }).attrs;
+        const allVideos = this.db.videos;
+        const suggestedVideos = [];
+        const suggestion = allVideos.filter((ele) =>
+            ele.categories.some((category) =>
+                video.categories.includes(category)
+            )
+        );
+        for (let i = 0; i < suggestionLimit; i++) {
+            if (video._id !== suggestion[i]._id) {
+                suggestedVideos.push({
+                    title: suggestion[i].title,
+                    release_date: suggestion[i].release_date,
+                    _id: suggestion[i]._id,
+                    creator: suggestion[i].creator,
+                });
+            }
+        }
+
+        return new Response(200, {}, { video: { ...video, suggestedVideos } });
+    } catch (error) {
+        return new Response(
+            500,
+            {},
+            {
+                error,
+            }
+        );
+    }
 };
