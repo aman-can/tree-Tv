@@ -146,7 +146,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                             }}
                             className={`${styles["tooltip"]}`}
                         >
-                            <Link className="icon-btn-teal" to="/">
+                            <Link className="icon-btn-teal" to="/sign-in">
                                 <Profile />
                             </Link>
                             <span className={`${styles["tooltiptext"]}`}>

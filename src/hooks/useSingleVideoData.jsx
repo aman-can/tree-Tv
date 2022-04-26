@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useLoaderOrToast } from "../context";
 
 export const useSingleVideoData = (id, suggestionsLimit) => {
     const [videoDetails, setVideoDetails] = useState({
@@ -14,11 +15,12 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
         _id: id,
     });
     const location = useLocation();
+    const { setIsLoading, setToastMessage } = useLoaderOrToast();
 
     useEffect(() => {
         (async () => {
             try {
-                // setIsLoading(true);
+                setIsLoading(true);
                 const res = await axios.get(
                     `/api/video/${id}/${suggestionsLimit}`
                 );
@@ -32,7 +34,7 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
                 //     text: err.message,
                 // });
             } finally {
-                // setIsLoading(false);
+                setIsLoading(false);
             }
         })();
     }, [location.pathname]);

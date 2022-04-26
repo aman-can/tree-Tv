@@ -1,0 +1,29 @@
+.TreeTv-modal {
+    position: absolute;
+    height: calc(100% - var(--appbar-height));
+    top: var(--appbar-height);
+    z-index: 2;
+    background: var(--primary-bg-color);
+}
+
+.TreeTv-modal > *:first-child > *:first-child > *,
+.TreeTv-modal > *:first-child > *:first-child {
+    border-color: var(--primary-text-color);
+    border-radius: inherit;
+}
+
+.TreeTv-modal > *:first-child > *:first-child > *:not(:first-child) {
+    background: var(--primary-bg-color );
+}
+
+.TreeTv-modal-header {
+    background-color: var(--primary-color);
+}
+
+.TreeTv-modal-header > *:first-child {
+    margin-left: 16px;
+}
+
+.TreeTv-text-capital {
+    text-transform: capitalize;
+}
