@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLoaderOrToast } from "../context";
 
 export const useVideos = () => {
     const [allVideos, setAllVideos] = useState([]);
+    const { setIsLoading, setToastMessage } = useLoaderOrToast();
+
     useEffect(() => {
         (async () => {
             try {
-                // setIsLoading(true);
+                setIsLoading(true);
                 const res = await axios.get("/api/videos");
                 if (res.status === 200) {
                     setAllVideos(res.data.videos);
@@ -18,7 +21,7 @@ export const useVideos = () => {
                 //     text: err.message,
                 // });
             } finally {
-                // setIsLoading(false);
+                setIsLoading(false);
             }
         })();
     }, []);

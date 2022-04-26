@@ -1,0 +1,7 @@
+.loader {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: var(--loader-bg-color);
+    z-index: 1000;
+}

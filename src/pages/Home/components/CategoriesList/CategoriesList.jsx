@@ -4,6 +4,7 @@ import { useDraggable } from "react-use-draggable-scroll";
 import styles from "./categoriesList.module.css";
 import { LeftArrow, RightArrow } from "../../../../icons";
 import { Chip } from "./components";
+import { useLoaderOrToast } from "../../../../context";
 
 export const CategoriesList = () => {
     const categoriesRef = useRef();
@@ -12,6 +13,7 @@ export const CategoriesList = () => {
     const [scrolEnd, setscrolEnd] = useState(false);
     const [categories, setCategories] = useState([]);
     const [active, setActive] = useState("");
+    const { setIsLoading, setToastMessage } = useLoaderOrToast();
 
     const chipScroll = (scroll) => () => {
         categoriesRef.current.scrollLeft += scroll;
@@ -40,7 +42,7 @@ export const CategoriesList = () => {
     useEffect(() => {
         (async () => {
             try {
-                // setIsLoading(true);
+                setIsLoading(true);
                 const res = await axios.get("/api/categories");
                 if (res.status === 200) {
                     setCategories(res.data.categories);
@@ -52,7 +54,7 @@ export const CategoriesList = () => {
                 // });
                 console.error(err.message);
             } finally {
-                // setIsLoading(false);
+                setIsLoading(false);
             }
         })();
     }, []);

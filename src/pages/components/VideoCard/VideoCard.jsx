@@ -11,8 +11,8 @@ export const VideoCard = ({ videos, canHover = true }) => {
         <div
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            onTouchStart={() => setIsHovering(true)}
-            onTouchEnd={() => setIsHovering(false)}
+            // onTouchStart={() => setIsHovering(true)}
+            // onTouchEnd={() => setIsHovering(false)}
             className={`${styles["treeTv-video-card"]} ${
                 canHover && styles["card-can-hover"]
             } card-hover`}

@@ -16,6 +16,7 @@
     --secondary-bg-color: var(--teal-400);
     --primary-color: var(--teal-600);
     --card-overlay-color: #0000005d;
+    --loader-bg-color: #212121d2;
     --card-color: #000000;
     --card-box-color: 0px 0px 20px 0px rgb(255, 255, 255, 12%),
         0 1px 2px rgb(255, 255, 255, 24%);
@@ -28,6 +29,7 @@
     --secondary-bg-color: var(--teal-100);
     --primary-color: var(--teal-500);
     --card-overlay-color: #ffffff63;
+    --loader-bg-color: #f1f5f993;
     --card-color: #ffffff;
     --card-box-color: 0px 0px 20px 0px rgba(0, 0, 0, 0.12),
         0 1px 2px rgba(0, 0, 0, 0.24);

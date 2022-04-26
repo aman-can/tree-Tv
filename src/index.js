@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { ContextWrapper } from "./components";
 
 // Call make Server
 makeServer();
@@ -11,9 +11,9 @@ makeServer();
 const rootElement = document.getElementById("root");
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
+        <ContextWrapper>
             <App />
-        </Router>
+        </ContextWrapper>
     </React.StrictMode>,
     rootElement
 );
