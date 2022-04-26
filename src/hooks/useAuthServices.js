@@ -27,17 +27,16 @@ export const useAuthSevices = (setFieldErrors) => {
                         });
                         localStorage.setItem("token", res.data.encodedToken);
                         navigate("/");
-                        // setToastMessage({
-                        //     type: "blue",
-                        //     text: "Signed up",
-                        // });
+                        setToastMessage({
+                            type: "blue",
+                            text: "Signed up",
+                        });
                     }
                 } catch (err) {
-                    console.error(err);
-                    // setToastMessage({
-                    //     type: "red",
-                    //     text: err.message,
-                    // });
+                    setToastMessage({
+                        type: "red",
+                        text: err.message,
+                    });
                 } finally {
                     setIsLoading(false);
                 }
@@ -63,17 +62,16 @@ export const useAuthSevices = (setFieldErrors) => {
                             replace: true,
                         });
 
-                        console.log("ssd"); // setToastMessage({
-                        //     type: "blue",
-                        //     text: "Signed in",
-                        // });
+                        setToastMessage({
+                            type: "blue",
+                            text: "Signed in",
+                        });
                     }
                 } catch (err) {
-                    console.error(err);
-                    // setToastMessage({
-                    //     type: "red",
-                    //     text: err.message,
-                    // });
+                    setToastMessage({
+                        type: "red",
+                        text: err.message,
+                    });
                 } finally {
                     setIsLoading(false);
                 }

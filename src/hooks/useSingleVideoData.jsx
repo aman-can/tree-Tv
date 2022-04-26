@@ -28,11 +28,10 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
                     setVideoDetails(res.data.video);
                 }
             } catch (err) {
-                console.error(err);
-                // setToastMessage({
-                //     type: "red",
-                //     text: err.message,
-                // });
+                setToastMessage({
+                    type: "red",
+                    text: err.message,
+                });
             } finally {
                 setIsLoading(false);
             }

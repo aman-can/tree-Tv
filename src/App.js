@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Mockman from "mockman-js";
 import { Home, Signin, Signup, SingleVideo } from "./pages";
-import { Navbar, PrivateRoute, Loader } from "./components";
+import { Navbar, PrivateRoute, Loader, Toast } from "./components";
 import { useTheme } from "./hooks";
 import { useEffect } from "react";
 import { useLoaderOrToast } from "./context";
@@ -13,15 +13,15 @@ function App() {
     }, [pathname]);
     const { changeTheme, theme } = useTheme();
 
-    const { isLoading } = useLoaderOrToast();
+    const { isLoading, toastMessage } = useLoaderOrToast();
 
     return (
         <div className="App" id={theme}>
             <>
                 {isLoading && <Loader />}
-                {/* {Object.values(toastMessage).every((e) => e) && (
+                {Object.values(toastMessage).every((e) => e) && (
                     <Toast text={toastMessage.text} type={toastMessage.type} />
-                )} */}
+                )}
                 <Navbar changeTheme={changeTheme} theme={theme} />
                 <Routes>
                     {/* <Route path="*" element={<FourOFour />} /> */}

@@ -15,11 +15,10 @@ export const useVideos = () => {
                     setAllVideos(res.data.videos);
                 }
             } catch (err) {
-                console.error(err.message);
-                // setToastMessage({
-                //     type: "red",
-                //     text: err.message,
-                // });
+                setToastMessage({
+                    type: "red",
+                    text: err.message,
+                });
             } finally {
                 setIsLoading(false);
             }
