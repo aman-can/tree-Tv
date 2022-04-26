@@ -1,0 +1,8 @@
+.treeTv-toast{
+    background: var(--primary-bg-color);
+}
+
+.toast-text{
+    max-width: 100%;
+    color: var(--primary-text-color);
+}

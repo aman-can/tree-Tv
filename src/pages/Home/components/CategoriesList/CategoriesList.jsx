@@ -48,11 +48,10 @@ export const CategoriesList = () => {
                     setCategories(res.data.categories);
                 }
             } catch (err) {
-                // setToastMessage({
-                //     type: "red",
-                //     text: err.message,
-                // });
-                console.error(err.message);
+                setToastMessage({
+                    type: "red",
+                    text: err.message,
+                });
             } finally {
                 setIsLoading(false);
             }
