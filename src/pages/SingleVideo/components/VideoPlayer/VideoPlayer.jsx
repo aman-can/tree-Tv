@@ -3,10 +3,13 @@ import { VideoDetails } from "./components";
 import styles from "./videoPlayer.module.css";
 import { useLocation } from "react-router-dom";
 import { useRef } from "react";
+import { useHistorySevices } from "../../../../hooks";
 
 export const VideoPlayer = ({ videoDetails }) => {
     const location = useLocation();
     const player = useRef();
+    const { addVideoToHistory } = useHistorySevices();
+
     return (
         <div className={`${styles["player-container"]}`}>
             <div className={`${styles["player-wrapper"]}`}>
@@ -18,6 +21,7 @@ export const VideoPlayer = ({ videoDetails }) => {
                     height="100%"
                     controls
                     onStart={() => {
+                        addVideoToHistory(videoDetails);
                         if (location?.state?.redirected)
                             player.current.seekTo(30);
                     }}

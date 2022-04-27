@@ -1,0 +1,97 @@
+.treeTv-video-card {
+    background: var(--card-color);
+    max-width: 40rem;
+    border-color: var(--accent-color);
+    box-shadow: unset;
+    transition: var(--transition);
+    user-select: none;
+    height: max-content;
+}
+
+.treeTv-card-body {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.treeTv-video-card button {
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.treeTv-video-card button:hover {
+    background: var(--primary-bg-color);
+    color: var(--teal-600);
+}
+
+.treeTv-card-title {
+    max-width: 15ch;
+}
+
+.card-side-text {
+    max-width: calc(60% - 1rem);
+    flex-grow: 0;
+}
+
+.card-desc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.treeTv-img-box {
+    position: relative;
+    flex-grow: 1;
+    min-height: 100%;
+}
+
+.treeTv-card-action {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    bottom: 0;
+}
+
+.treeTv-card-img {
+    min-width: 100%;
+    object-fit: cover;
+    min-height: 100%;
+    object-position: left;
+}
+
+@media (min-width: 650px) {
+    .treeTv-img-box {
+        aspect-ratio: 16/9;
+    }
+
+    .treeTv-video-card:hover {
+        box-shadow: var(--card-box-color);
+    }
+
+    .treeTv-video-card button {
+        transition: var(--transition);
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    .treeTv-video-card:hover button {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .treeTv-card-title {
+        max-width: 27ch;
+    }
+
+    .treeTv-card-img {
+        width: 30%;
+        min-height: 100%;
+        flex-grow: 1;
+        object-fit: cover;
+    }
+}

@@ -23,7 +23,6 @@
 }
 
 .comment-input button {
-    color: var(--primary-text-color);
     border-radius: 5px;
     padding-block: 0;
 }
