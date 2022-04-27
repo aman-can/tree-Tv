@@ -1,0 +1,21 @@
+.histroy-card-layout {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+    align-content: flex-start;
+    min-height: calc(100vh - calc(2 * var(--appbar-height)));
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    max-height: var(--appbar-height);
+}
+
+.history-header button {
+    border-radius: 5px;
+    padding-block: 0;
+}
