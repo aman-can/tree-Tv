@@ -14,6 +14,7 @@ export { History } from "./History";
 export { Profile } from "./Profile";
 export { Twitter } from "./Twitter";
 export { Github } from "./Github";
+export { Delete } from "./Delete";
 export { Liked } from "./Liked";
 export { Share } from "./Share";
 export { Home } from "./Home";

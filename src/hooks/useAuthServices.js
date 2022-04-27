@@ -20,7 +20,6 @@ export const useAuthSevices = (setFieldErrors) => {
                         name,
                     });
                     if (res.status === 201) {
-                        console.log(res);
                         setCurrentUser({
                             encodedToken: res.data.encodedToken,
                             ...res.data.createdUser,
