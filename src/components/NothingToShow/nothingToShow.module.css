@@ -1,5 +1,4 @@
 .no-videos {
-    min-height: calc(100vh - calc(2 * var(--appbar-height)));
     flex-direction: column;
 }
 

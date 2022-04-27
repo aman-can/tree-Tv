@@ -1,10 +1,13 @@
+.history-page {
+    padding: 1rem
+}
+
 .histroy-card-layout {
     display: flex;
     flex-wrap: wrap;
     padding: 1rem;
-    gap: 1rem;
+    gap: 2rem;
     align-content: flex-start;
-    min-height: calc(100vh - calc(2 * var(--appbar-height)));
 }
 
 .history-header {
@@ -13,6 +16,8 @@
     padding: 1rem;
     align-items: center;
     max-height: var(--appbar-height);
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
 }
 
 .history-header button {

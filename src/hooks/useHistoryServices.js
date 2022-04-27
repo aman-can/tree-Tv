@@ -18,7 +18,7 @@ export const useHistorySevices = (getHistory = false) => {
                         },
                     });
                     if (res.status === 200) {
-                        setHistory(res.data.history);
+                        setHistory(res.data.history.reverse());
                     }
                 } catch (err) {
                     setHistory([]);

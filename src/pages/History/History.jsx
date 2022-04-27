@@ -8,7 +8,7 @@ export const History = () => {
         useHistorySevices(true);
 
     return (
-        <>
+        <div className={`${styles["history-page"]}`}>
             <div className={`${styles["history-header"]}`}>
                 <div>
                     <p className="heading-5">History</p>
@@ -39,6 +39,6 @@ export const History = () => {
             ) : (
                 <NothingToShow />
             )}
-        </>
+        </div>
     );
 };
