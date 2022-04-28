@@ -12,12 +12,16 @@ import {
     Profile,
     Watchlater,
 } from "../../icons";
+import { useLockBodyScroll } from "../../hooks";
 import logo from "../Images/logo.svg";
 import styles from "./navbar.module.css";
 
 export const Navbar = ({ changeTheme, theme }) => {
     const [drawer, setDrawer] = useState(false);
     const [bodyLock, setBodyLock] = useState(false);
+
+    useLockBodyScroll(bodyLock);
+
     return (
         <>
             <div className={`${styles["treeTv-appbar"]} appbar-fixed`}>
@@ -161,6 +165,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                     <button
                         onClick={() => {
                             setDrawer((prev) => !prev);
+                            setBodyLock((prev) => !prev);
                         }}
                         className="icon-btn-teal"
                     >

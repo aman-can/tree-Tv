@@ -2,10 +2,10 @@ import loader from "./spinner.json";
 import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
 import styles from "./loader.module.css";
-// import { useLockBodyScroll } from "../../hooks";
+import { useLockBodyScroll } from "../../hooks";
 
 export const Loader = () => {
-    // useLockBodyScroll();
+    useLockBodyScroll();
     const loaderRef = useRef();
 
     useEffect(() => {
