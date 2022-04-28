@@ -85,7 +85,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                             }}
                             className={`${styles["tooltip"]}`}
                         >
-                            <Link className="icon-btn-teal" to="/">
+                            <Link className="icon-btn-teal" to="/liked-videos">
                                 <Liked />
                             </Link>
                             <span className={`${styles["tooltiptext"]}`}>
@@ -99,11 +99,11 @@ export const Navbar = ({ changeTheme, theme }) => {
                             }}
                             className={`${styles["tooltip"]}`}
                         >
-                            <Link className="icon-btn-teal" to="/">
+                            <Link className="icon-btn-teal" to="/watchlater">
                                 <Watchlater />
                             </Link>
                             <span className={`${styles["tooltiptext"]}`}>
-                                Watch later
+                                Watchlater
                             </span>
                         </li>
                         <li
