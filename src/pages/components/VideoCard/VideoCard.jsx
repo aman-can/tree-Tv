@@ -1,12 +1,31 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Play, PlaylistAdd, Share, Watchlater } from "../../../icons";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context";
+import {
+    Play,
+    PlaylistAdd,
+    Share,
+    Watchlater,
+    Delete,
+    WatchlaterFilled,
+} from "../../../icons";
 import { VideoThumbnail } from "./components";
 import styles from "./videoCard.module.css";
 
-export const VideoCard = ({ videos, canHover = true }) => {
+export const VideoCard = ({
+    videos,
+    canHover = true,
+    isLikeCard = false,
+    isWatchLaterCard = false,
+    handleRemove,
+    handleAddWatchlater,
+    isInWatchlater = false,
+}) => {
     const [isHovering, setIsHovering] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const { currentUser } = useAuth();
+
     return (
         <div
             onMouseEnter={() => setIsHovering(true)}
@@ -48,17 +67,81 @@ export const VideoCard = ({ videos, canHover = true }) => {
                     <div
                         className={`${styles["treeTv-video-actions"]} card-actions`}
                     >
-                        <div className="card-icon-btns">
-                            <button className="icon-btn-ghost-sm">
-                                <Watchlater />
-                            </button>
-                            <button className="icon-btn-ghost-sm">
-                                <PlaylistAdd />
-                            </button>
-                            <button className="icon-btn-ghost-sm">
-                                <Share />
-                            </button>
-                        </div>
+                        {isLikeCard && (
+                            <div className="card-icon-btns">
+                                {!isInWatchlater && (
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleAddWatchlater(videos);
+                                        }}
+                                        className="icon-btn-ghost-sm"
+                                    >
+                                        <Watchlater />
+                                    </button>
+                                )}
+                                <button className="icon-btn-ghost-sm">
+                                    <PlaylistAdd />
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleRemove(videos._id);
+                                    }}
+                                    className="icon-btn-ghost-sm"
+                                >
+                                    <Delete />
+                                </button>
+                            </div>
+                        )}
+                        {isWatchLaterCard && (
+                            <div className="card-icon-btns">
+                                <button className="icon-btn-ghost-sm">
+                                    <PlaylistAdd />
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleRemove(videos._id);
+                                    }}
+                                    className="icon-btn-ghost-sm"
+                                >
+                                    <Delete />
+                                </button>
+                            </div>
+                        )}
+                        {!isLikeCard && !isWatchLaterCard && (
+                            <div className="card-icon-btns">
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        !!currentUser.encodedToken
+                                            ? isInWatchlater
+                                                ? handleRemove(videos._id)
+                                                : handleAddWatchlater(videos)
+                                            : navigate(`/sign-in`, {
+                                                  state: {
+                                                      from: location?.pathname,
+                                                  },
+                                                  replace: true,
+                                              });
+                                    }}
+                                    className="icon-btn-ghost-sm"
+                                >
+                                    {isInWatchlater ? (
+                                        <WatchlaterFilled />
+                                    ) : (
+                                        <Watchlater />
+                                    )}
+                                </button>
+                                <button className="icon-btn-ghost-sm">
+                                    <PlaylistAdd />
+                                </button>
+                                <button className="icon-btn-ghost-sm">
+                                    <Share />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <h3 className="card-title text-noWrap text-body-lg">

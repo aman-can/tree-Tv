@@ -1,15 +1,46 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./videoDetails.module.css";
-import { Liked, PlaylistAdd, Share } from "../../../../../../icons";
+import {
+    Liked,
+    LikedFilled,
+    PlaylistAdd,
+    Share,
+} from "../../../../../../icons";
+import { useLikeSevices } from "../../../../../../hooks";
+import { useAuth } from "../../../../../../context";
 
 export const VideoDetails = ({ videoDetails }) => {
+    const { liked, likeVideo, unlikeVideo } = useLikeSevices(true);
+    const isLiked = liked.some((item) => item._id === videoDetails._id);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { currentUser } = useAuth();
+
+    const handleLike = () => {
+        currentUser?.encodedToken
+            ? isLiked
+                ? unlikeVideo(videoDetails._id)
+                : likeVideo(videoDetails)
+            : navigate(`/sign-in`, {
+                  state: {
+                      from: location?.pathname,
+                  },
+                  replace: true,
+              });
+    };
+
     return (
         <>
             <div className={`${styles["video-details"]} card`}>
                 <div
                     className={`${styles["desc-btns"]} card-badge-green horizontal-list`}
                 >
-                    <button className="btn-outlined-teal">
-                        liked <Liked />
+                    <button
+                        onClick={() => handleLike()}
+                        className="btn-outlined-teal"
+                    >
+                        {isLiked ? "liked" : "like"}
+                        {isLiked ? <LikedFilled /> : <Liked />}
                     </button>
                     <button className="btn-outlined-teal">
                         Save <PlaylistAdd />

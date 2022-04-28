@@ -1,6 +1,14 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Mockman from "mockman-js";
-import { History, Home, Signin, Signup, SingleVideo } from "./pages";
+import {
+    History,
+    Home,
+    LikedVideos,
+    Signin,
+    Signup,
+    SingleVideo,
+    Watchlater,
+} from "./pages";
 import { Navbar, PrivateRoute, Loader, Toast } from "./components";
 import { useTheme } from "./hooks";
 import { useEffect } from "react";
@@ -40,8 +48,8 @@ function App() {
                             path="playlist/:playlistId"
                             element={<Wishlist />}
                         /> */}
-                        {/* <Route path="watchlater" element={<UserProfile />} /> */}
-                        {/* <Route path="likes" element={<UserProfile />} /> */}
+                        <Route path="watchlater" element={<Watchlater />} />
+                        <Route path="liked-videos" element={<LikedVideos />} />
                         <Route path="history" element={<History />} />
                     </Route>
 

@@ -2,7 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { Delete, PlaylistAdd, Watchlater } from "../../../../icons";
 import styles from "./historyVideoCard.module.css";
 
-export const HistoryVideoCard = ({ videos, deleteVideo }) => {
+export const HistoryVideoCard = ({
+    videos,
+    deleteVideo,
+    handleAddWatchlater,
+    isInWatchlater = false,
+}) => {
     const navigate = useNavigate();
 
     return (
@@ -34,9 +39,17 @@ export const HistoryVideoCard = ({ videos, deleteVideo }) => {
                         <button className="icon-btn-ghost-sm">
                             <PlaylistAdd />
                         </button>
-                        <button className="icon-btn-ghost-sm">
-                            <Watchlater />
-                        </button>
+                        {!isInWatchlater && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleAddWatchlater(videos);
+                                }}
+                                className="icon-btn-ghost-sm"
+                            >
+                                <Watchlater />
+                            </button>
+                        )}
                     </div>
                 </div>
                 <div className={`${styles["card-side-text"]}`}>

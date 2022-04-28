@@ -4,3 +4,4 @@ export { History } from "./History/History";
 export { Signup } from "./auth/Signup/Signup";
 export { Signin } from "./auth/Signin/Signin";
 export { Home } from "./Home/Home";
+export { Watchlater } from "./Watchlater/Watchlater";
