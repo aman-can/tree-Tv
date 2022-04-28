@@ -1,26 +1,14 @@
-.history-page {
-    padding: 1rem
-}
-
 .histroy-card-layout {
     display: flex;
     flex-wrap: wrap;
-    padding: 1rem;
+    margin-top: 1.5rem;
     gap: 2rem;
     align-content: flex-start;
 }
 
-.history-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    align-items: center;
-    max-height: var(--appbar-height);
-    border-left: 5px solid var(--primary-color);
-    border-radius: 5px;
-}
-
-.history-header button {
-    border-radius: 5px;
-    padding-block: 0;
+@media (min-width: 650px) {
+    .histroy-card-layout {
+        margin-top: unset;
+        padding: 1.5rem;
+    }
 }
