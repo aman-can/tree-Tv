@@ -2,26 +2,26 @@ import axios from "axios";
 import { useAuth, useLoaderOrToast } from "../context";
 import { useState, useEffect } from "react";
 
-export const useHistorySevices = (getHistory = false) => {
+export const useWatchlaterSevices = (getWatchlater = false) => {
     const { setIsLoading, setToastMessage } = useLoaderOrToast();
     const { currentUser } = useAuth();
-    const [history, setHistory] = useState([]);
+    const [watchlater, setWatchlater] = useState([]);
 
     useEffect(() => {
-        if (currentUser?.encodedToken && getHistory) {
+        if (currentUser?.encodedToken && getWatchlater) {
             (async () => {
                 try {
                     setIsLoading(true);
-                    const res = await axios.get("/api/user/history", {
+                    const res = await axios.get("/api/user/watchlater", {
                         headers: {
                             authorization: localStorage.getItem("token"),
                         },
                     });
                     if (res.status === 200) {
-                        setHistory(res.data.history.reverse());
+                        setWatchlater(res.data.watchlater.reverse());
                     }
                 } catch (err) {
-                    setHistory([]);
+                    setWatchlater([]);
                     setToastMessage({
                         type: "red",
                         text: err.message,
@@ -33,11 +33,11 @@ export const useHistorySevices = (getHistory = false) => {
         }
     }, [currentUser]);
 
-    const addVideoToHistory = async (video) => {
+    const addToWatchlater = async (video) => {
         if (currentUser?.encodedToken) {
             try {
                 const res = await axios.post(
-                    "/api/user/history",
+                    "/api/user/watchlater",
                     { video },
                     {
                         headers: {
@@ -46,30 +46,10 @@ export const useHistorySevices = (getHistory = false) => {
                     }
                 );
                 if (res.status === 201) {
-                    setHistory(res.data.history);
-                }
-            } catch (err) {
-                setToastMessage({
-                    type: "red",
-                    text: err.message,
-                });
-            }
-        }
-    };
-
-    const deleteVideoFromHistory = async (videoId) => {
-        if (currentUser?.encodedToken) {
-            try {
-                const res = await axios.delete(`/api/user/history/${videoId}`, {
-                    headers: {
-                        authorization: localStorage.getItem("token"),
-                    },
-                });
-                if (res.status === 200) {
-                    setHistory(res.data.history);
+                    setWatchlater(res.data.watchlater);
                     setToastMessage({
                         type: "green",
-                        text: "Video removed from history",
+                        text: "Added video to watchlater",
                     });
                 }
             } catch (err) {
@@ -81,19 +61,22 @@ export const useHistorySevices = (getHistory = false) => {
         }
     };
 
-    const deleteAllVideosInHistory = async () => {
+    const removeFromWatchlater = async (videoId) => {
         if (currentUser?.encodedToken) {
             try {
-                const res = await axios.delete(`/api/user/history/all`, {
-                    headers: {
-                        authorization: localStorage.getItem("token"),
-                    },
-                });
+                const res = await axios.delete(
+                    `/api/user/watchlater/${videoId}`,
+                    {
+                        headers: {
+                            authorization: localStorage.getItem("token"),
+                        },
+                    }
+                );
                 if (res.status === 200) {
-                    setHistory(res.data.history);
+                    setWatchlater(res.data.watchlater);
                     setToastMessage({
-                        type: "green",
-                        text: "History cleared",
+                        type: "blue",
+                        text: "Removed video from watchlater",
                     });
                 }
             } catch (err) {
@@ -106,9 +89,8 @@ export const useHistorySevices = (getHistory = false) => {
     };
 
     return {
-        addVideoToHistory,
-        deleteVideoFromHistory,
-        deleteAllVideosInHistory,
-        history,
+        watchlater,
+        addToWatchlater,
+        removeFromWatchlater,
     };
 };

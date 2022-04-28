@@ -1,3 +1,5 @@
+export { WatchlaterFilled } from "./WatchlaterFilled";
+export { LikedFilled } from "./LikedFilled";
 export { PlaylistAdd } from "./PlaylistAdd";
 export { RightArrow } from "./RightArrow";
 export { Watchlater } from "./Watchlater";

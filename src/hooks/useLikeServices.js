@@ -2,26 +2,26 @@ import axios from "axios";
 import { useAuth, useLoaderOrToast } from "../context";
 import { useState, useEffect } from "react";
 
-export const useHistorySevices = (getHistory = false) => {
+export const useLikeSevices = (getLikes = false) => {
     const { setIsLoading, setToastMessage } = useLoaderOrToast();
     const { currentUser } = useAuth();
-    const [history, setHistory] = useState([]);
+    const [liked, setLiked] = useState([]);
 
     useEffect(() => {
-        if (currentUser?.encodedToken && getHistory) {
+        if (currentUser?.encodedToken && getLikes) {
             (async () => {
                 try {
                     setIsLoading(true);
-                    const res = await axios.get("/api/user/history", {
+                    const res = await axios.get("/api/user/likes", {
                         headers: {
                             authorization: localStorage.getItem("token"),
                         },
                     });
                     if (res.status === 200) {
-                        setHistory(res.data.history.reverse());
+                        setLiked(res.data.likes.reverse());
                     }
                 } catch (err) {
-                    setHistory([]);
+                    setLiked([]);
                     setToastMessage({
                         type: "red",
                         text: err.message,
@@ -33,11 +33,11 @@ export const useHistorySevices = (getHistory = false) => {
         }
     }, [currentUser]);
 
-    const addVideoToHistory = async (video) => {
+    const likeVideo = async (video) => {
         if (currentUser?.encodedToken) {
             try {
                 const res = await axios.post(
-                    "/api/user/history",
+                    "/api/user/likes",
                     { video },
                     {
                         headers: {
@@ -46,30 +46,10 @@ export const useHistorySevices = (getHistory = false) => {
                     }
                 );
                 if (res.status === 201) {
-                    setHistory(res.data.history);
-                }
-            } catch (err) {
-                setToastMessage({
-                    type: "red",
-                    text: err.message,
-                });
-            }
-        }
-    };
-
-    const deleteVideoFromHistory = async (videoId) => {
-        if (currentUser?.encodedToken) {
-            try {
-                const res = await axios.delete(`/api/user/history/${videoId}`, {
-                    headers: {
-                        authorization: localStorage.getItem("token"),
-                    },
-                });
-                if (res.status === 200) {
-                    setHistory(res.data.history);
+                    setLiked(res.data.likes);
                     setToastMessage({
                         type: "green",
-                        text: "Video removed from history",
+                        text: "video liked",
                     });
                 }
             } catch (err) {
@@ -81,19 +61,19 @@ export const useHistorySevices = (getHistory = false) => {
         }
     };
 
-    const deleteAllVideosInHistory = async () => {
+    const unlikeVideo = async (videoId) => {
         if (currentUser?.encodedToken) {
             try {
-                const res = await axios.delete(`/api/user/history/all`, {
+                const res = await axios.delete(`/api/user/likes/${videoId}`, {
                     headers: {
                         authorization: localStorage.getItem("token"),
                     },
                 });
                 if (res.status === 200) {
-                    setHistory(res.data.history);
+                    setLiked(res.data.likes);
                     setToastMessage({
-                        type: "green",
-                        text: "History cleared",
+                        type: "blue",
+                        text: "Video unliked",
                     });
                 }
             } catch (err) {
@@ -106,9 +86,8 @@ export const useHistorySevices = (getHistory = false) => {
     };
 
     return {
-        addVideoToHistory,
-        deleteVideoFromHistory,
-        deleteAllVideosInHistory,
-        history,
+        liked,
+        likeVideo,
+        unlikeVideo,
     };
 };

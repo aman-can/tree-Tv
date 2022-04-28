@@ -23,7 +23,7 @@ export const NothingToShow = () => {
     return (
         <div className={`${styles["no-videos"]} flex-center text-align-center`}>
             <p className="heading-5">There are no videos to show</p>
-            <p className="text-body-lg text-gutterTop">
+            <p className="text-body-lg">
                 Nothing seems to have been added here
             </p>
             <span

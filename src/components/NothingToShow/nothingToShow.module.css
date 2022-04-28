@@ -1,8 +1,14 @@
 .no-videos {
+    margin-top: 1rem;
     flex-direction: column;
 }
 
 .illustration {
     max-width: 30rem;
     aspect-ratio: 1/1;
+}
+
+.no-videos a {
+    border-radius: 5px;
+    padding-block: 0;
 }

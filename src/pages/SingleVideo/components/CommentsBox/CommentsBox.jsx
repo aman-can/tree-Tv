@@ -25,7 +25,11 @@ export const CommentsBox = ({ comments }) => {
                             <span className="divider-dark-horizontal" />
                         </div>
                         <button className="btn-outlined-teal">clear</button>
-                        <button className="btn-filled-teal">comment</button>
+                        <button
+                            className={`${styles["filled-btn"]} btn-filled-teal`}
+                        >
+                            comment
+                        </button>
                     </div>
                 </div>
             </div>

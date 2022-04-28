@@ -25,6 +25,11 @@
 .comment-input button {
     border-radius: 5px;
     padding-block: 0;
+    color: var(--primary-text-color);
+}
+
+.comment-input button.filled-btn {
+    color: var(--dark);
 }
 
 .comment-input span {
