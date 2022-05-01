@@ -1,6 +1,5 @@
 import { useLikeSevices, useWatchlaterSevices } from "../../hooks";
-import { VideoCard, VideosLayout } from "../components";
-import { PageWrapper } from "../components";
+import { VideoCard, VideosLayout, PageWrapper } from "../components";
 
 export const LikedVideos = () => {
     const { liked, unlikeVideo } = useLikeSevices(true);

@@ -3,7 +3,7 @@ import { filterConstants } from "../../../../../../constants";
 
 import styles from "./chip.module.css";
 
-export const Chip = ({ text, setActive }) => {
+export const Chip = ({ text }) => {
     const { filterState, filterDispatch } = useFilter();
 
     const clickHandler = () => {

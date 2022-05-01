@@ -1,5 +1,6 @@
 .treeTv-toast{
     background: var(--primary-bg-color);
+    z-index: 1001;
 }
 
 .toast-text{

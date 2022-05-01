@@ -5,17 +5,30 @@ export const PageWrapper = ({
     children,
     hearderText,
     clearFunction,
+    createFunction,
     videoLength,
     noClear = false,
+    inPlaylists = false,
+    playlistsLength,
 }) => {
     return (
         <div className={`${styles["page-wrapper"]}`}>
             <div className={`${styles["page-header"]}`}>
                 <div>
                     <p className="heading-5">{hearderText}</p>
-                    <p className="text-body-lg">
-                        {!!videoLength ? `${videoLength} videos` : "No videos"}
-                    </p>
+                    {!inPlaylists ? (
+                        <p className="text-body-lg">
+                            {!!videoLength
+                                ? `${videoLength} videos`
+                                : "No videos"}
+                        </p>
+                    ) : (
+                        <p className="text-body-lg">
+                            {!!playlistsLength
+                                ? `${playlistsLength} playlists `
+                                : "No playlists"}
+                        </p>
+                    )}
                 </div>
                 {!!videoLength && noClear && (
                     <button
@@ -25,8 +38,26 @@ export const PageWrapper = ({
                         Clear
                     </button>
                 )}
+                {inPlaylists && (
+                    <button
+                        onClick={() => createFunction()}
+                        className="btn-filled-teal"
+                    >
+                        New Playlist
+                    </button>
+                )}
             </div>
-            {!!videoLength ? children : <NothingToShow />}
+            {inPlaylists ? (
+                !!playlistsLength ? (
+                    children
+                ) : (
+                    <NothingToShow />
+                )
+            ) : !!videoLength ? (
+                children
+            ) : (
+                <NothingToShow />
+            )}
         </div>
     );
 };

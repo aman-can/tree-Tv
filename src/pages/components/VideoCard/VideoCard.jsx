@@ -15,11 +15,14 @@ import styles from "./videoCard.module.css";
 export const VideoCard = ({
     videos,
     canHover = true,
+    handlePlaylistToggle,
     isLikeCard = false,
     isWatchLaterCard = false,
     handleRemove,
     handleAddWatchlater,
     isInWatchlater = false,
+    isPlaylistCard = false,
+    playlistId,
 }) => {
     const [isHovering, setIsHovering] = useState(false);
     const navigate = useNavigate();
@@ -80,7 +83,10 @@ export const VideoCard = ({
                                         <Watchlater />
                                     </button>
                                 )}
-                                <button className="icon-btn-ghost-sm">
+                                <button
+                                    onClick={() => handlePlaylistToggle(videos)}
+                                    className="icon-btn-ghost-sm"
+                                >
                                     <PlaylistAdd />
                                 </button>
                                 <button
@@ -110,7 +116,24 @@ export const VideoCard = ({
                                 </button>
                             </div>
                         )}
-                        {!isLikeCard && !isWatchLaterCard && (
+                        {isPlaylistCard && (
+                            <div className="card-icon-btns">
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleRemove(
+                                            false,
+                                            playlistId,
+                                            videos._id
+                                        );
+                                    }}
+                                    className="icon-btn-ghost-sm"
+                                >
+                                    <Delete />
+                                </button>
+                            </div>
+                        )}
+                        {!isLikeCard && !isWatchLaterCard && !isPlaylistCard && (
                             <div className="card-icon-btns">
                                 <button
                                     onClick={(e) => {
@@ -134,7 +157,14 @@ export const VideoCard = ({
                                         <Watchlater />
                                     )}
                                 </button>
-                                <button className="icon-btn-ghost-sm">
+                                <button
+                                    onClick={() =>
+                                        handlePlaylistToggle((prev) => {
+                                            return { ...prev, ...videos };
+                                        })
+                                    }
+                                    className="icon-btn-ghost-sm"
+                                >
                                     <PlaylistAdd />
                                 </button>
                                 <button className="icon-btn-ghost-sm">

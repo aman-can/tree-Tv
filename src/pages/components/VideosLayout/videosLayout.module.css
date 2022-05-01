@@ -6,7 +6,12 @@
     grid-auto-flow: row;
     align-content: flex-start;
     justify-items: center;
+    min-height: calc(100vh - calc(var(--appbar-height) * 3));
     align-items: flex-start;
+}
+
+.homepage {
+    min-height: calc(100vh - calc(var(--appbar-height) + 62px));
 }
 
 @media (min-width: 650px) {

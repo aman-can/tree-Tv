@@ -5,10 +5,18 @@ const LoaderAndToastContext = createContext();
 const LoaderAndToastProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [toastMessage, setToastMessage] = useState({ type: "", text: "" });
+    const [playlistModalVideo, setPlaylistModalVideo] = useState({});
 
     return (
         <LoaderAndToastContext.Provider
-            value={{ isLoading, setIsLoading, toastMessage, setToastMessage }}
+            value={{
+                playlistModalVideo,
+                setPlaylistModalVideo,
+                isLoading,
+                setIsLoading,
+                toastMessage,
+                setToastMessage,
+            }}
         >
             {children}
         </LoaderAndToastContext.Provider>

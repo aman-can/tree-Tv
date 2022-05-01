@@ -1,4 +1,7 @@
+export { PlaylistModalAdd } from "./PlaylistModalAdd";
 export { WatchlaterFilled } from "./WatchlaterFilled";
+export { PlaylistLoader } from "./PlaylistLoader";
+export { PlaylistCheck } from "./PlaylistCheck";
 export { LikedFilled } from "./LikedFilled";
 export { PlaylistAdd } from "./PlaylistAdd";
 export { RightArrow } from "./RightArrow";
@@ -18,6 +21,7 @@ export { Twitter } from "./Twitter";
 export { Github } from "./Github";
 export { Delete } from "./Delete";
 export { Liked } from "./Liked";
+export { Cross } from "./Cross";
 export { Share } from "./Share";
 export { Home } from "./Home";
 export { Play } from "./Play";
