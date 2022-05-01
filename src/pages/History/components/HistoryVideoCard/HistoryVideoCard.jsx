@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../context";
 import { Delete, PlaylistAdd, Watchlater } from "../../../../icons";
 import styles from "./historyVideoCard.module.css";
 
@@ -6,9 +7,12 @@ export const HistoryVideoCard = ({
     videos,
     deleteVideo,
     handleAddWatchlater,
+    handlePlaylistToggle,
     isInWatchlater = false,
 }) => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { currentUser } = useAuth();
 
     return (
         <div
@@ -36,7 +40,22 @@ export const HistoryVideoCard = ({
                         className={`${styles["treeTv-card-img"]} card-side-image`}
                     />
                     <div className={`${styles["treeTv-card-action"]}`}>
-                        <button className="icon-btn-ghost-sm">
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                !!currentUser.encodedToken
+                                    ? handlePlaylistToggle((prev) => {
+                                          return { ...prev, ...videos };
+                                      })
+                                    : navigate(`/sign-in`, {
+                                          state: {
+                                              from: location?.pathname,
+                                          },
+                                          replace: true,
+                                      });
+                            }}
+                            className="icon-btn-ghost-sm"
+                        >
                             <PlaylistAdd />
                         </button>
                         {!isInWatchlater && (

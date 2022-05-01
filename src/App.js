@@ -34,13 +34,18 @@ function App() {
     return (
         <div className="App" id={theme}>
             <>
-                {!!Object.keys(playlistModalVideo).length && (
-                    <PlaylistModal video={playlistModalVideo} />
-                )}
-                {isLoading && <Loader />}
-                {Object.values(toastMessage).every((e) => e) && (
-                    <Toast text={toastMessage.text} type={toastMessage.type} />
-                )}
+                <div>
+                    {!!Object.keys(playlistModalVideo).length && (
+                        <PlaylistModal video={playlistModalVideo} />
+                    )}
+                    {isLoading && <Loader />}
+                    {Object.values(toastMessage).every((e) => e) && (
+                        <Toast
+                            text={toastMessage.text}
+                            type={toastMessage.type}
+                        />
+                    )}
+                </div>
                 <Navbar changeTheme={changeTheme} theme={theme} />
                 <Routes>
                     {/* <Route path="*" element={<FourOFour />} /> */}

@@ -84,7 +84,16 @@ export const VideoCard = ({
                                     </button>
                                 )}
                                 <button
-                                    onClick={() => handlePlaylistToggle(videos)}
+                                    onClick={() =>
+                                        !!currentUser.encodedToken
+                                            ? handlePlaylistToggle(videos)
+                                            : navigate(`/sign-in`, {
+                                                  state: {
+                                                      from: location?.pathname,
+                                                  },
+                                                  replace: true,
+                                              })
+                                    }
                                     className="icon-btn-ghost-sm"
                                 >
                                     <PlaylistAdd />
@@ -102,7 +111,19 @@ export const VideoCard = ({
                         )}
                         {isWatchLaterCard && (
                             <div className="card-icon-btns">
-                                <button className="icon-btn-ghost-sm">
+                                <button
+                                    onClick={() =>
+                                        !!currentUser.encodedToken
+                                            ? handlePlaylistToggle(videos)
+                                            : navigate(`/sign-in`, {
+                                                  state: {
+                                                      from: location?.pathname,
+                                                  },
+                                                  replace: true,
+                                              })
+                                    }
+                                    className="icon-btn-ghost-sm"
+                                >
                                     <PlaylistAdd />
                                 </button>
                                 <button
@@ -159,9 +180,14 @@ export const VideoCard = ({
                                 </button>
                                 <button
                                     onClick={() =>
-                                        handlePlaylistToggle((prev) => {
-                                            return { ...prev, ...videos };
-                                        })
+                                        !!currentUser.encodedToken
+                                            ? handlePlaylistToggle(videos)
+                                            : navigate(`/sign-in`, {
+                                                  state: {
+                                                      from: location?.pathname,
+                                                  },
+                                                  replace: true,
+                                              })
                                     }
                                     className="icon-btn-ghost-sm"
                                 >

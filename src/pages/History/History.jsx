@@ -3,11 +3,14 @@ import { HistoryVideoCard } from "./components/HistoryVideoCard/HistoryVideoCard
 import styles from "./history.module.css";
 import { NothingToShow } from "../../components";
 import { PageWrapper } from "../components";
+import { useLoaderOrToast } from "../../context";
 
 export const History = () => {
     const { history, deleteVideoFromHistory, deleteAllVideosInHistory } =
         useHistorySevices(true);
     const { watchlater, addToWatchlater } = useWatchlaterSevices(true);
+    const { setPlaylistModalVideo } = useLoaderOrToast();
+
     return (
         <PageWrapper
             clearFunction={deleteAllVideosInHistory}
@@ -25,6 +28,7 @@ export const History = () => {
                         key={video._id}
                         videos={video}
                         deleteVideo={deleteVideoFromHistory}
+                        handlePlaylistToggle={setPlaylistModalVideo}
                     />
                 ))}
             </div>
