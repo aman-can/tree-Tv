@@ -7,7 +7,7 @@ import {
     Share,
 } from "../../../../../../icons";
 import { useLikeSevices } from "../../../../../../hooks";
-import { useAuth } from "../../../../../../context";
+import { useAuth, useLoaderOrToast } from "../../../../../../context";
 
 export const VideoDetails = ({ videoDetails }) => {
     const { liked, likeVideo, unlikeVideo } = useLikeSevices(true);
@@ -28,6 +28,7 @@ export const VideoDetails = ({ videoDetails }) => {
                   replace: true,
               });
     };
+    const { setPlaylistModalVideo } = useLoaderOrToast();
 
     return (
         <>
@@ -42,7 +43,10 @@ export const VideoDetails = ({ videoDetails }) => {
                         {isLiked ? "liked" : "like"}
                         {isLiked ? <LikedFilled /> : <Liked />}
                     </button>
-                    <button className="btn-outlined-teal">
+                    <button
+                        onClick={() => setPlaylistModalVideo(videoDetails)}
+                        className="btn-outlined-teal"
+                    >
                         Save <PlaylistAdd />
                     </button>
                     <button className="btn-outlined-teal">

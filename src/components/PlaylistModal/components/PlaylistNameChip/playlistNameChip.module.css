@@ -1,0 +1,26 @@
+.playlist-names {
+    user-select: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 2.6rem;
+    gap: 1rem;
+}
+
+.playlist-names:hover {
+    background: var(--loader-bg-color);
+}
+
+.playlist-check svg {
+    color: var(--teal-400);
+}
+
+.playlist-loader{
+    padding: 0.3rem;
+    gap: 1rem;
+    user-select: none;
+    color: var(--primary-color);
+    height: 2.6rem;
+}

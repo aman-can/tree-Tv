@@ -1,0 +1,34 @@
+.playlist-modal {
+    z-index: 1000;
+}
+
+.playlist-modal-dialog {
+    width: 20rem;
+}
+
+.playlist-content {
+    background: var(--card-color);
+}
+
+.playlist-input {
+    margin-block: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 5px;
+    outline: 1px solid var(--accent-color);
+    border: unset;
+}
+
+.playlist-header,
+.playlist-footer {
+    padding: 0.5rem;
+}
+
+.playlist-header button {
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.playlist-header button:hover {
+    background: var(--primary-bg-color);
+    color: var(--teal-600);
+}

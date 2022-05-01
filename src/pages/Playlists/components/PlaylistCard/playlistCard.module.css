@@ -1,0 +1,69 @@
+.playlist-card {
+    background: var(--card-color);
+    max-width: 21rem;
+    min-width: 21rem;
+    border: unset;
+    user-select: none;
+}
+
+.playlist-card img {
+    width: 100%;
+}
+
+.empty-playlist {
+    transition: var(--transition);
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(
+        320deg,
+        var(--card-border-color) 0%,
+        var(--secondary-bg-color) 49%
+    );
+}
+
+.playlist-overlay {
+    background: var(--loader-bg-color);
+    inset: 0;
+    left: 60%;
+    width: unset;
+    height: unset;
+    gap: unset;
+    border-radius: unset;
+}
+
+.playlist-footer {
+    align-items: center;
+}
+
+.playlist-card button {
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.playlist-card button:hover {
+    background: var(--primary-bg-color);
+    color: var(--teal-600);
+}
+
+.playlist-overlay > * {
+    text-shadow: var(--loader-bg-color);
+    color: var(--primary-text-color);
+}
+
+.playlist-card:hover {
+    box-shadow: var(--card-box-color);
+    border: initial;
+}
+
+@media (min-width: 650px) {
+    .playlist-card button {
+        transition: var(--transition);
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .playlist-card:hover button {
+        visibility: visible;
+        opacity: 1;
+    }
+}

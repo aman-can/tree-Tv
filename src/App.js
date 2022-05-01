@@ -4,12 +4,20 @@ import {
     History,
     Home,
     LikedVideos,
+    Playlists,
     Signin,
     Signup,
+    SinglePlaylistVideos,
     SingleVideo,
     Watchlater,
 } from "./pages";
-import { Navbar, PrivateRoute, Loader, Toast } from "./components";
+import {
+    Navbar,
+    PrivateRoute,
+    Loader,
+    Toast,
+    PlaylistModal,
+} from "./components";
 import { useTheme } from "./hooks";
 import { useEffect } from "react";
 import { useLoaderOrToast } from "./context";
@@ -21,11 +29,14 @@ function App() {
     }, [pathname]);
     const { changeTheme, theme } = useTheme();
 
-    const { isLoading, toastMessage } = useLoaderOrToast();
+    const { isLoading, toastMessage, playlistModalVideo } = useLoaderOrToast();
 
     return (
         <div className="App" id={theme}>
             <>
+                {!!Object.keys(playlistModalVideo).length && (
+                    <PlaylistModal video={playlistModalVideo} />
+                )}
                 {isLoading && <Loader />}
                 {Object.values(toastMessage).every((e) => e) && (
                     <Toast text={toastMessage.text} type={toastMessage.type} />
@@ -43,11 +54,11 @@ function App() {
                     </Route>
 
                     <Route element={<PrivateRoute />}>
-                        {/* <Route path="playlist" element={<Wishlist />} /> */}
-                        {/* <Route
-                            path="playlist/:playlistId"
-                            element={<Wishlist />}
-                        /> */}
+                        <Route path="playlists" element={<Playlists />} />
+                        <Route
+                            path="playlists/:playlistId"
+                            element={<SinglePlaylistVideos />}
+                        />
                         <Route path="watchlater" element={<Watchlater />} />
                         <Route path="liked-videos" element={<LikedVideos />} />
                         <Route path="history" element={<History />} />
