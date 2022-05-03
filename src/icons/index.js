@@ -25,3 +25,4 @@ export { Cross } from "./Cross";
 export { Share } from "./Share";
 export { Home } from "./Home";
 export { Play } from "./Play";
+export { Edit } from "./Edit";

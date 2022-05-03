@@ -46,7 +46,7 @@ export const useHistorySevices = (getHistory = false) => {
                     }
                 );
                 if (res.status === 201) {
-                    setHistory(res.data.history);
+                    setHistory(res.data.history.reverse());
                 }
             } catch (err) {
                 setToastMessage({
@@ -66,7 +66,7 @@ export const useHistorySevices = (getHistory = false) => {
                     },
                 });
                 if (res.status === 200) {
-                    setHistory(res.data.history);
+                    setHistory(res.data.history.reverse());
                     setToastMessage({
                         type: "green",
                         text: "Video removed from history",

@@ -197,7 +197,6 @@ export const usePlaylistServices = ({
                     });
                 }
             } catch (err) {
-                console.info(err);
                 setToastMessage({
                     type: "red",
                     text: err.message,

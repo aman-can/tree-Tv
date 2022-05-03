@@ -9,7 +9,7 @@ export const useAuthSevices = (setFieldErrors) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const signup = async (name, email, password) => {
+    const signup = async (name, email, color, password) => {
         if (formValidate(email, password, setFieldErrors, name)) {
             (async () => {
                 try {
@@ -17,7 +17,8 @@ export const useAuthSevices = (setFieldErrors) => {
                     const res = await axios.post("/api/auth/signup", {
                         email,
                         password,
-                        name,
+                        fullName: name,
+                        profile_color: color,
                     });
                     if (res.status === 201) {
                         setCurrentUser({
@@ -25,6 +26,18 @@ export const useAuthSevices = (setFieldErrors) => {
                             ...res.data.createdUser,
                         });
                         localStorage.setItem("token", res.data.encodedToken);
+                        localStorage.setItem(
+                            "profile_color",
+                            res.data.createdUser.profile_color
+                        );
+                        localStorage.setItem(
+                            "email",
+                            res.data.createdUser.email
+                        );
+                        localStorage.setItem(
+                            "fullName",
+                            res.data.createdUser.fullName
+                        );
                         navigate("/");
                         setToastMessage({
                             type: "blue",
@@ -57,6 +70,15 @@ export const useAuthSevices = (setFieldErrors) => {
                             ...res.data.foundUser,
                         });
                         localStorage.setItem("token", res.data.encodedToken);
+                        localStorage.setItem("email", res.data.foundUser.email);
+                        localStorage.setItem(
+                            "email",
+                            res.data.foundUser.profile_color
+                        );
+                        localStorage.setItem(
+                            "fullName",
+                            res.data.foundUser.fullName
+                        );
                         navigate(location?.state?.from || "/", {
                             replace: true,
                         });
@@ -78,8 +100,10 @@ export const useAuthSevices = (setFieldErrors) => {
         }
     };
     const signout = () => {
-        if (localStorage.getItem("token")) {
+        if (!!localStorage.getItem("token")) {
             localStorage.removeItem("token");
+            localStorage.removeItem("email");
+            localStorage.removeItem("fullName");
             setCurrentUser({});
         }
     };
