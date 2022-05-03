@@ -5,6 +5,7 @@ import {
     Home,
     LikedVideos,
     Playlists,
+    Profile,
     Signin,
     Signup,
     SinglePlaylistVideos,
@@ -59,6 +60,7 @@ function App() {
                     </Route>
 
                     <Route element={<PrivateRoute />}>
+                        <Route path="user-profile" element={<Profile />} />
                         <Route path="playlists" element={<Playlists />} />
                         <Route
                             path="playlists/:playlistId"

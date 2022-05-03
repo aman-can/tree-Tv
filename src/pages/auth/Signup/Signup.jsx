@@ -2,14 +2,27 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../auth.module.css";
 import { useAuthSevices } from "../../../hooks";
+import { Edit, Profile } from "../../../icons";
 
 export const Signup = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const nameRef = useRef();
+    const [color, setColor] = useState("teal");
+    const [name, setName] = useState("");
     const [fieldErrors, setFieldErrors] = useState({});
+    const [openColorsModal, setOpenColorsModal] = useState(false);
     const { signup } = useAuthSevices(setFieldErrors);
+    const colors = ["pink", "blue", "green", "teal", "yellow"];
 
+    const getAvatarLetter = () => {
+        if (!name.trim()) {
+            return "";
+        }
+        let avatar = name.split(" ").filter((e) => e !== "");
+        avatar = avatar[0][0] + (!!avatar[1] ? avatar[1][0] : "");
+        avatar = avatar.toUpperCase();
+        return avatar;
+    };
     return (
         <div className={`${styles["TreeTv-modal"]} modal-sm`}>
             <div className="modal-dialog">
@@ -26,21 +39,71 @@ export const Signup = () => {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 signup(
-                                    nameRef.current.value,
+                                    name,
                                     emailRef.current.value,
+                                    color,
                                     passwordRef.current.value
                                 );
                             }}
                         >
+                            <div className="badge-container heading-6 margin-auto">
+                                <div
+                                    onClick={() =>
+                                        setOpenColorsModal((prev) => !prev)
+                                    }
+                                    style={{
+                                        backgroundColor: `var(--${color}-100)`,
+                                    }}
+                                    className={`${styles["TreeTv-profile-avatar"]} avatar-circle-lg  flex-center heading-4 margin-auto`}
+                                >
+                                    {getAvatarLetter() || <Profile />}
+                                </div>
+                                <span
+                                    className={`${styles["edit-badge"]} number-badge-green`}
+                                >
+                                    <Edit />
+                                </span>
+                            </div>
+
+                            {openColorsModal && (
+                                <div
+                                    onClick={() =>
+                                        setOpenColorsModal((prev) => !prev)
+                                    }
+                                    className={`${styles["avatar-colors-modal"]} flex-center`}
+                                >
+                                    <div
+                                        className={`${styles["avatar-colors-box"]} horizontal-list`}
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        {colors.map((color) => (
+                                            <div
+                                                onClick={() => {
+                                                    setColor(color);
+                                                    setOpenColorsModal(false);
+                                                }}
+                                                key={color}
+                                                style={{
+                                                    backgroundColor: `var(--${color}-100)`,
+                                                }}
+                                                className={`${styles["TreeTv-profile-avatar"]} avatar-circle-sm  flex-center heading-6 margin-auto`}
+                                            >
+                                                {getAvatarLetter()}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                             <label htmlFor="username" className="input-label">
                                 Full Name
                                 <input
-                                    ref={nameRef}
+                                    value={name}
                                     className="input"
                                     type="text"
                                     placeholder="Enter your Full Name"
                                     minLength={1}
                                     id="username"
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                                 <p className="input-error-msg">
                                     {fieldErrors.fullName}

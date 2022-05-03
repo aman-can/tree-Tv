@@ -12,6 +12,11 @@
     border-radius: inherit;
 }
 
+.TreeTv-modal-dialog {
+    min-width: unset;
+    width: 30rem;
+}
+
 .TreeTv-modal > *:first-child > *:first-child > *:not(:first-child) {
     background: var(--primary-bg-color);
 }
@@ -24,40 +29,17 @@
     margin-left: 16px;
 }
 
-.TreeTv-text-capital {
-    text-transform: capitalize;
+.profile-heading {
+    display: inline-block;
 }
 
-.TreeTv-profile-avatar {
+.profile-avatar {
     outline-color: var(--primary-text-color);
     color: var(--dark);
-    cursor: pointer;
+}
+
+.profile-avatar,
+.profile-heading > * {
     user-select: none;
-    width: 4rem;
-}
-
-.avatar-colors-modal {
-    inset: 0;
-    position: fixed;
-    background-color: var(--loader-bg-color);
-}
-
-.edit-badge{
-    font-size: 1.1rem;
-    background: var(--light);
-    color: var(--dark);
-    outline: 1px solid var(--dark);
-}
-
-.avatar-colors-box {
-    background-color: var(--card-color);
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid var(--primary-text-color);
-    flex-wrap: wrap;
-    max-width: 20rem;
-}
-
-.avatar-colors-box * {
-    width: 2.5rem;
+    border-color: var(--primary-text-color);
 }
