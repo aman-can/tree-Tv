@@ -6,6 +6,7 @@ import {
     LikedVideos,
     Playlists,
     Profile,
+    Search,
     Signin,
     Signup,
     SinglePlaylistVideos,
@@ -53,6 +54,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="home" element={<Home />} />
                     <Route path="video/:videoId" element={<SingleVideo />} />
+                    <Route path="search" element={<Search />} />
 
                     <Route element={<PrivateRoute switchPath={false} />}>
                         <Route path="sign-up" element={<Signup />} />

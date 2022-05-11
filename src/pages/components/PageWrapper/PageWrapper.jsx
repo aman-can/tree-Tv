@@ -7,9 +7,12 @@ export const PageWrapper = ({
     clearFunction,
     createFunction,
     videoLength,
-    noClear = false,
+    isClearable = false,
     inPlaylists = false,
     playlistsLength,
+    inSearch = false,
+    searchSorted = false,
+    sortFunction,
 }) => {
     return (
         <div className={`${styles["page-wrapper"]}`}>
@@ -30,12 +33,20 @@ export const PageWrapper = ({
                         </p>
                     )}
                 </div>
-                {!!videoLength && noClear && (
+                {!!videoLength && isClearable && (
                     <button
                         onClick={() => clearFunction()}
                         className="btn-filled-teal"
                     >
                         Clear
+                    </button>
+                )}
+                {!!videoLength && inSearch && (
+                    <button
+                        onClick={() => sortFunction()}
+                        className="btn-filled-teal"
+                    >
+                        {searchSorted ? "Clear Sort" : "Sort by Time"}
                     </button>
                 )}
                 {inPlaylists && (

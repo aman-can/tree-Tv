@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { filterReducer, initialFilterState } from "../../reducers";
 import { useVideos } from "../../hooks";
+import { filterConstants } from "../../constants";
 
 const FilterContext = createContext();
 
@@ -14,7 +15,7 @@ const FilterProvider = ({ children }) => {
 
     useEffect(() => {
         filterDispatch({
-            type: "INITIALISE",
+            type: filterConstants.INITIALISE,
             payload: { videos: allVideos },
         });
     }, [allVideos]);

@@ -1,0 +1,16 @@
+.search-card-layout {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 650px) {
+    .search-card-layout {
+        margin-top: unset;
+        padding: 1.5rem;
+    }
+}
+
