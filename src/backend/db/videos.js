@@ -5,6 +5,56 @@
 
 export const videos = [
     {
+        _id: "ee7muQ_qKU0",
+        title: "The wild world of carnivorous plants - Kenny Coogan",
+        categories: ["Plant explained", "True Facts", "carnivorous plants"],
+        description:
+            "Around the world there are more than 600 plant species that supplement a regular diet of sunlight, water and soil with insects, frogs and even rats. Flies, tadpoles and beetles fall prey to the remarkable, predatory antics of carnivorous plants. What exactly are carnivorous plants and how do they trap their prey? Kenny Coogan dives into the world of these flesh-eating tricksters.",
+        creator: "TED-Ed",
+        release_date: "Apr 11, 2019",
+        comments: [
+            {
+                _id: "jhhkjhwe",
+                profile_color: "--teal-100",
+                user_name: "Lorem Ipsum",
+                comment:
+                    "okay but can we all appreciate this clay animation type of video, this was so interesting to watch",
+            },
+            {
+                _id: "asfdfdfsa",
+                user_name: "John Doe",
+                comment:
+                    "Damn, why'd they have to include the bugs screams of terror?",
+                profile_color: "--pink-100",
+            },
+        ],
+    },
+    {
+        _id: "1eUJ7ST1R2o",
+        title: "How To Grow Flower Seeds Fast (With Update)",
+        categories: ["Plant tips", "From the seed", "How tos"],
+        description:
+            "Daizz's tips:-Growing flowers from seed can be a difficult task for beginning gardeners. Seeds and seedlings are delicate, and the wrong conditions can ruin them fairly easily. In order to achieve the best results, plant your seeds indoors into a small, sterile container using professionally packaged potting soil. Follow the instructions on the back of your seed packet and provide plenty of light and water to your growing seedlings. Once the flowers have developed strong enough roots, transplant them into your garden.",
+        creator: "Urban Gardening",
+        release_date: "Sep 22, 2017",
+        comments: [
+            {
+                _id: "jhhkjhwe",
+                profile_color: "--blue-100",
+                user_name: "Lorem Ipsum",
+                comment:
+                    "This is such a helpful video! Thank you for taking the time to teach us your talented technique!",
+            },
+            {
+                _id: "asfdfdfsa",
+                profile_color: "--teal-100",
+                user_name: "John Doe",
+                comment:
+                    "Your video comes at the right time. I was waiting for one such about growing flowers from seeds. I tried planting Gomphrena Amarnath seeds. But they died off after attaining the height of about an inch. Could this be because of lack of sunlight or moisture (too much or too less)?",
+            },
+        ],
+    },
+    {
         _id: "8J3ahubwB1Q",
         title: "Types of Plants",
         categories: ["types of plants", "Plant explained"],
@@ -26,26 +76,56 @@ export const videos = [
         ],
     },
     {
-        _id: "LmJrtn9pTa4",
-        title: "Best Indoor Plants India",
-        categories: ["types of plants", "Air Purifying", "Home decorative"],
+        _id: "BW7jDMulAuc",
+        title: "EVS-Parts of a Plant (Root System and Shoot System) Types of Roots & Functions of Shoots by Sakshi",
+        categories: ["types of plants", "Plant explained", "True Facts"],
         description:
-            "Best Indoor Plants India | Best Indoor Plants for Clean Air | Top 10 Indoor Plants in India Hey Family In this video we talk about stylish Indoor Plants that help in purifying the air and easy to maintain.Even if you are a beginner,you can easily manage these plants. Here is the Ultimate list of Indoor Plants for lazy Gardeners",
-        creator: "Magic Cubes",
-        release_date: "Jan 17, 2021",
+            "Basic parts of most all plants are roots, stems, leaves, flowers, fruits, and seeds. The roots help provide support by anchoring the plant and absorbing water and nutrients needed for growth. They can also store sugars and carbohydrates that the plant uses to carry out other functions. The root system, which supports the plants and absorbs water and minerals, is usually underground. Example plant organ systems: The shoot system of a plant consists of leaves, stems, flowers, and fruits. The root system anchors the plant while absorbing water and minerals from the soil.",
+        creator: "Psychological Sakshi",
+        release_date: "Jun 29, 2021",
         comments: [
             {
                 _id: "jhhkjhwe",
+                profile_color: "--green-100",
                 user_name: "Lorem Ipsum",
-                comment: "Trailer is awesome",
+                comment:
+                    "Mam what is mean fibrorus root one more time and shoot system to",
             },
             {
                 _id: "asfdfdfsa",
                 user_name: "John Doe",
-                comment: "Waiting for the movie",
+                comment:
+                    "I am so dumb, I didn't knew what is the meaning of root and shoot",
+                profile_color: "--pink-100",
             },
         ],
     },
+    {
+        _id: "lued_aTVX4w",
+        title: "We Tested Houseplants In ZERO LIGHT - The results were shocking",
+        categories: ["Plant explained", "True Facts"],
+        description:
+            "Best Indoor Plants India | Best Indoor Plants for Clean Air | Top 10 Indoor Plants in India Hey Family In this video we talk about stylish Indoor Plants that help in purifying the air and easy to maintain.Even if you are a beginner,you can easily manage these plants. Here is the Ultimate list of Indoor Plants for lazy Gardeners",
+        creator: "AsapSCIENCE",
+        release_date: "Feb 25, 2021",
+        comments: [
+            {
+                _id: "jhhkjhwe",
+                user_name: "Lorem Ipsum",
+                comment:
+                    "I hadn't watered my plants in months and one of my cacti decided to just grow a couple flowers. Plants are metal as hell",
+                profile_color: "--blue-100",
+            },
+            {
+                _id: "asfdfdfsa",
+                user_name: "John Doe",
+                comment:
+                    "Wait, the guy who has 500+ plants in his house, and he also has a cat? how does that even works?",
+                profile_color: "--pink-100",
+            },
+        ],
+    },
+
     {
         _id: "kWr8SvbUGMo",
         title: "5 Air Purifying Indoor Plants for Styling Your Home",
@@ -111,6 +191,36 @@ export const videos = [
                 _id: "asfdfdfsa",
                 user_name: "John Doe",
                 comment: "Waiting for the movie",
+            },
+        ],
+    },
+    {
+        _id: "1_FUwWtxVz8",
+        title: "5 Fruit Trees that are too EASY to GROW in the Home Garden",
+        categories: [
+            "Plant tips",
+            "Plant explained",
+            "Fruit Bearing",
+            "Grow at Home",
+        ],
+        description:
+            "Self Sufficient Me is based on our small 3-acre property/homestead in SE Queensland Australia about 45kms north of Brisbane - the climate is subtropical (similar to Florida). I started Self Sufficient Me in 2011 as a blog website project where I document and write about backyard food growing, self-sufficiency, and urban farming in general. I love sharing my foodie and DIY adventures online so come along with me and let's get into it! Cheers, Mark :)",
+        creator: "Self Sufficient Me",
+        release_date: "Jul 6, 2019",
+        comments: [
+            {
+                _id: "jhhkjhwe",
+                profile_color: "--blue-100",
+                user_name: "Lorem Ipsum",
+                comment:
+                    "Nobody's gonna talk about the fact he's saying very useful information about the plants having great points while being enthusiastic and happy?! This guy is amazing",
+            },
+            {
+                _id: "asfdfdfsa",
+                user_name: "John Doe",
+                comment:
+                    "Mark is definitely the steve Irwin of gardening, I get a sense that hes passionate about cultivation and probably views the plants as living creatures.",
+                profile_color: "--pink-100",
             },
         ],
     },
@@ -327,28 +437,24 @@ export const videos = [
         ],
     },
     {
-        _id: "e1WpEWbQWuI",
-        title: "8 Healthiest Plants To Have In Your House",
-        categories: [
-            "Air Purifying",
-            "Grow at Home",
-            "types of plants",
-            "True Facts",
-        ],
+        _id: "u2GWd2j3qJ8",
+        title: "Can Plants Think?",
+        categories: ["True Facts", "carnivorous plants", "Plant explained"],
         description:
             "Do plants really have health benefits? Can they boost your mood? Do they really clean the air around you? We’re talking all that and more. ",
-        release_date: "May 7, 2020",
-        creator: "Bestie",
+        release_date: "Jan 9, 2014",
+        creator: "AsapSCIENCE",
         comments: [
             {
                 _id: "jhhkjhwe",
                 user_name: "Lorem Ipsum",
-                comment: "Trailer is awesome",
+                comment: 'Some might ask "Can Humans Think?"',
             },
             {
                 _id: "asfdfdfsa",
                 user_name: "John Doe",
-                comment: "Waiting for the movie",
+                comment:
+                    "This is so amazing! I never knew plants shared information and nutrients! ",
             },
         ],
     },
@@ -448,6 +554,35 @@ export const videos = [
                 _id: "asfdfdfsa",
                 user_name: "John Doe",
                 comment: "Waiting for the movie",
+            },
+        ],
+    },
+    {
+        _id: "x_vyDis1g-Q",
+        title: "Top 10 Plants That Could Kill You",
+        categories: [
+            "Deadly Plants",
+            "Super Rare",
+            "True Facts",
+            "carnivorous plants",
+        ],
+        description:
+            "Just when you thought it was safe to get back in the garden. For this list, we’re looking at plants, flowers and beans that, if ingested or otherwise absorbed, could prove lethal to birds, cats, dogs and yes, even humans. Welcome to WatchMojo, and today we’re counting down our picks for the Top 10 Plants That Could Kill You.",
+        creator: "WatchMojo.com",
+        release_date: "Aug 4, 2019",
+        comments: [
+            {
+                _id: "jhhkjhwe",
+                profile_color: "--teal-100",
+                user_name: "Lorem Ipsum",
+                comment:
+                    "I remember an episode of ‘Forensic Files’ where a wife poisoned her husband with castor beans; he didn’t die at the time (he probably has passed since it happened)",
+            },
+            {
+                _id: "asfdfdfsa",
+                user_name: "John Doe",
+                comment: "Cool, this will come handy at my nature-adventures!",
+                profile_color: "--pink-100",
             },
         ],
     },

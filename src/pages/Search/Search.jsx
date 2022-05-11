@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { filterConstants } from "../../constants";
 import { useFilter, useLoaderOrToast } from "../../context";
 import { useWatchlaterSevices } from "../../hooks";
@@ -15,14 +15,17 @@ export const Search = () => {
     const { watchlater, addToWatchlater } = useWatchlaterSevices();
     const { setPlaylistModalVideo } = useLoaderOrToast();
     const [query] = useSearchParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
-        filterDispatch({
-            type: filterConstants.SEARCH,
-            payload: {
-                searchText: query.get("text"),
-            },
-        });
+        const text = query.get("text");
+        !!text
+            ? filterDispatch({
+                  type: filterConstants.SEARCH,
+                  payload: {
+                      searchText: text,
+                  },
+              })
+            : navigate("404");
     }, [query]);
 
     return (

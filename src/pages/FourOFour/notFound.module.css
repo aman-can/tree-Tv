@@ -1,0 +1,14 @@
+.notFound {
+    margin-top: 1rem;
+    flex-direction: column;
+    min-height: calc(100vh - 6rem)
+}
+
+.illustration {
+    max-width: 40rem;
+}
+
+.notFound a {
+    border-radius: 5px;
+    padding-block: 0;
+}

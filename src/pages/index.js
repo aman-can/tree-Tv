@@ -9,3 +9,4 @@ export { Signin } from "./auth/Signin/Signin";
 export { Signup } from "./auth/Signup/Signup";
 export { Search } from "./Search/Search";
 export { Home } from "./Home/Home";
+export { FourOFour } from "./FourOFour/FourOFour";

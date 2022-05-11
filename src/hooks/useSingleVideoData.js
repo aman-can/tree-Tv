@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLoaderOrToast } from "../context";
 
 export const useSingleVideoData = (id, suggestionsLimit) => {
@@ -15,7 +15,8 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
         _id: id,
     });
     const location = useLocation();
-    const { setIsLoading, setToastMessage } = useLoaderOrToast();
+    const navigate = useNavigate();
+    const { setIsLoading } = useLoaderOrToast();
 
     useEffect(() => {
         (async () => {
@@ -28,10 +29,7 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
                     setVideoDetails(res.data.video);
                 }
             } catch (err) {
-                setToastMessage({
-                    type: "red",
-                    text: err.message,
-                });
+                navigate("404");
             } finally {
                 setIsLoading(false);
             }

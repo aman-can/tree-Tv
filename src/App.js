@@ -1,5 +1,4 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import Mockman from "mockman-js";
 import {
     History,
     Home,
@@ -12,6 +11,7 @@ import {
     SinglePlaylistVideos,
     SingleVideo,
     Watchlater,
+    FourOFour,
 } from "./pages";
 import {
     Navbar,
@@ -50,7 +50,7 @@ function App() {
                 </div>
                 <Navbar changeTheme={changeTheme} theme={theme} />
                 <Routes>
-                    {/* <Route path="*" element={<FourOFour />} /> */}
+                    <Route path="*" element={<FourOFour />} />
                     <Route path="/" element={<Home />} />
                     <Route path="home" element={<Home />} />
                     <Route path="video/:videoId" element={<SingleVideo />} />
@@ -72,8 +72,6 @@ function App() {
                         <Route path="liked-videos" element={<LikedVideos />} />
                         <Route path="history" element={<History />} />
                     </Route>
-
-                    <Route path="mock" element={<Mockman />} />
                 </Routes>
             </>
         </div>
