@@ -2,9 +2,10 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { useDraggable } from "react-use-draggable-scroll";
 import styles from "./categoriesList.module.css";
-import { LeftArrow, RightArrow } from "../../../../icons";
+import { LeftArrow, RightArrow } from "../../../icons";
 import { Chip } from "./components";
-import { useLoaderOrToast } from "../../../../context";
+import { useFilter, useLoaderOrToast } from "../../../context";
+import { filterConstants } from "../../../constants";
 
 export const CategoriesList = () => {
     const categoriesRef = useRef();
@@ -14,6 +15,7 @@ export const CategoriesList = () => {
     const [categories, setCategories] = useState([]);
     const [active, setActive] = useState("");
     const { setIsLoading, setToastMessage } = useLoaderOrToast();
+    const { filterDispatch } = useFilter();
 
     const chipScroll = (scroll) => () => {
         categoriesRef.current.scrollLeft += scroll;
@@ -56,6 +58,11 @@ export const CategoriesList = () => {
                 setIsLoading(false);
             }
         })();
+        return () => {
+            filterDispatch({
+                type: filterConstants.CLEAR_ALL_FILTERS,
+            });
+        };
     }, []);
 
     return (

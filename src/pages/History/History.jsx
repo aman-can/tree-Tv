@@ -1,8 +1,6 @@
 import { useHistorySevices, useWatchlaterSevices } from "../../hooks";
-import { HistoryVideoCard } from "./components/HistoryVideoCard/HistoryVideoCard";
 import styles from "./history.module.css";
-import { NothingToShow } from "../../components";
-import { PageWrapper } from "../components";
+import { HorizontalVideoCard, PageWrapper } from "../components";
 import { useLoaderOrToast } from "../../context";
 
 export const History = () => {
@@ -16,11 +14,11 @@ export const History = () => {
             clearFunction={deleteAllVideosInHistory}
             hearderText={"History"}
             videoLength={history.length}
-            noClear
+            isClearable
         >
             <div className={`${styles["histroy-card-layout"]}`}>
                 {history.map((video) => (
-                    <HistoryVideoCard
+                    <HorizontalVideoCard
                         isInWatchlater={watchlater.some(
                             (item) => item._id === video._id
                         )}

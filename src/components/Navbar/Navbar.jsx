@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {
+    Link,
+    useLocation,
+    useNavigate,
+    useSearchParams,
+    createSearchParams,
+} from "react-router-dom";
 import {
     DarkMode,
     History,
@@ -19,6 +25,9 @@ import styles from "./navbar.module.css";
 export const Navbar = ({ changeTheme, theme }) => {
     const [drawer, setDrawer] = useState(false);
     const [bodyLock, setBodyLock] = useState(false);
+    const [query, setQuery] = useSearchParams();
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     useLockBodyScroll(bodyLock);
 
@@ -39,11 +48,17 @@ export const Navbar = ({ changeTheme, theme }) => {
                         type="search"
                         placeholder="Search"
                         className={`${styles["treeTv-search"]}`}
-                        onChange={(e) => {
-                            console.log("adsddf");
-                        }}
                         onKeyUp={(e) => {
-                            console.log("sdasd");
+                            if (e.key === "Enter") {
+                                pathname === "/search"
+                                    ? setQuery({ text: e.target.value })
+                                    : navigate({
+                                          pathname: "/search",
+                                          search: `?${createSearchParams({
+                                              text: e.target.value,
+                                          })}`,
+                                      });
+                            }
                         }}
                     />
                 </div>

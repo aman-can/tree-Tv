@@ -1,5 +1,5 @@
-import { useFilter } from "../../../../../../context";
-import { filterConstants } from "../../../../../../constants";
+import { useFilter } from "../../../../../context";
+import { filterConstants } from "../../../../../constants";
 
 import styles from "./chip.module.css";
 

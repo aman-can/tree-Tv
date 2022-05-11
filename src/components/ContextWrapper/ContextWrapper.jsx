@@ -1,12 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, LoaderAndToastProvider } from "../../context";
+import {
+    AuthProvider,
+    LoaderAndToastProvider,
+    FilterProvider,
+} from "../../context";
 
 export const ContextWrapper = ({ children }) => {
     return (
         <LoaderAndToastProvider>
-            <AuthProvider>
-                <BrowserRouter>{children}</BrowserRouter>
-            </AuthProvider>
+            <FilterProvider>
+                <AuthProvider>
+                    <BrowserRouter>{children}</BrowserRouter>
+                </AuthProvider>
+            </FilterProvider>
         </LoaderAndToastProvider>
     );
 };

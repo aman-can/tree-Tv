@@ -29,6 +29,7 @@
 
 .card-side-text {
     max-width: calc(60% - 1rem);
+    min-width: calc(60% - 1rem);
     flex-grow: 0;
 }
 
@@ -39,6 +40,10 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     white-space: normal;
+}
+
+.search-card .card-desc {
+    -webkit-line-clamp: 1;
 }
 
 .treeTv-img-box {
@@ -78,7 +83,7 @@
         visibility: hidden;
         opacity: 0;
     }
-    
+
     .treeTv-video-card:hover button {
         visibility: visible;
         opacity: 1;
@@ -91,7 +96,18 @@
     .treeTv-card-img {
         width: 30%;
         min-height: 100%;
-        flex-grow: 1;
         object-fit: cover;
     }
+
+    .search-card {
+        max-width: 60rem;
+    }
+
+    .search-card .treeTv-card-title {
+        max-width: unset;
+        text-overflow: unset;
+        white-space: unset;
+    }
+
+  
 }
