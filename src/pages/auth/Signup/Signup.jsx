@@ -8,7 +8,7 @@ import { getAvatarLetter } from "../../../utils";
 export const Signup = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const [color, setColor] = useState("teal");
+    const [color, setColor] = useState("--teal-100");
     const [name, setName] = useState("");
     const [fieldErrors, setFieldErrors] = useState({});
     const [openColorsModal, setOpenColorsModal] = useState(false);
@@ -82,7 +82,7 @@ export const Signup = () => {
                                                 }}
                                                 key={color}
                                                 style={{
-                                                    backgroundColor: `var(--${color}-100)`,
+                                                    backgroundColor: `var(${color})`,
                                                 }}
                                                 className={`${styles["TreeTv-profile-avatar"]} avatar-circle-sm  flex-center heading-6 margin-auto`}
                                             >
