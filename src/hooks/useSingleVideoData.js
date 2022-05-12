@@ -37,10 +37,6 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
         })();
     }, [location.pathname]);
 
-    // const updateAllVideosService = async ({ videoId, comments }) => {
-    //     return axios.post(`/api/video/${videoId}`, { comments });
-    // };
-
     const AddComment = async (videoId, comments) => {
         if (currentUser?.encodedToken) {
             try {
