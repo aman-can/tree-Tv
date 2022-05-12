@@ -51,6 +51,7 @@
     transition: var(--transition);
 }
 
+
 .drawer {
     transform: translate(-100%);
     position: absolute;
@@ -87,6 +88,10 @@
     align-items: center;
     position: relative;
     gap: 0.4rem;
+}
+
+.treeTv-search::-webkit-search-cancel-button{
+    margin-right: 1rem;
 }
 
 @media (min-width: 650px) {

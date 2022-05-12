@@ -65,7 +65,7 @@
     }
 
     .treeTv-video-actions button {
-        background: var(--card-overlay-color);
+        background: var(--loader-bg-color);
     }
 
     .treeTv-video-actions button:hover {

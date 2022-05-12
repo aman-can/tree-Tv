@@ -37,7 +37,9 @@ export const VideoCard = ({
     };
 
     const handleShare = () => {
-        navigator.clipboard.writeText(window.location.href);
+        navigator.clipboard.writeText(
+            `${window.location.href}video/${videos._id}`
+        );
         setToastMessage({
             type: "blue",
             text: "Link Copied!",
