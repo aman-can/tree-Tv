@@ -28,7 +28,7 @@ export const VideoDetails = ({ videoDetails }) => {
                   replace: true,
               });
     };
-    const { setPlaylistModalVideo } = useLoaderOrToast();
+    const { setPlaylistModalVideo, setToastMessage } = useLoaderOrToast();
 
     return (
         <>
@@ -44,12 +44,30 @@ export const VideoDetails = ({ videoDetails }) => {
                         {isLiked ? <LikedFilled /> : <Liked />}
                     </button>
                     <button
-                        onClick={() => setPlaylistModalVideo(videoDetails)}
+                        onClick={() => {
+                            currentUser?.encodedToken
+                                ? setPlaylistModalVideo(videoDetails)
+                                : navigate(`/sign-in`, {
+                                      state: {
+                                          from: location?.pathname,
+                                      },
+                                      replace: true,
+                                  });
+                        }}
                         className="btn-outlined-teal"
                     >
                         Save <PlaylistAdd />
                     </button>
-                    <button className="btn-outlined-teal">
+                    <button
+                        onClick={() => {
+                            navigator.clipboard.writeText(window.location.href);
+                            setToastMessage({
+                                type: "blue",
+                                text: "Link Copied!",
+                            });
+                        }}
+                        className="btn-outlined-teal"
+                    >
                         share <Share />
                     </button>
                 </div>

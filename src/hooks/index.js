@@ -7,3 +7,4 @@ export { useHistorySevices } from "./useHistoryServices";
 export { useSingleVideoData } from "./useSingleVideoData";
 export { usePlaylistServices } from "./usePlaylistServices";
 export { useWatchlaterSevices } from "./useWatchlaterSevices";
+export { useWindowSize } from "./useWindowSize";

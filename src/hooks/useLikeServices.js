@@ -49,7 +49,7 @@ export const useLikeSevices = (getLikes = false) => {
                     setLiked(res.data.likes);
                     setToastMessage({
                         type: "green",
-                        text: "video liked",
+                        text: "Video liked",
                     });
                 }
             } catch (err) {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context";
+import { useAuth, useLoaderOrToast } from "../../../context";
+import { useWindowSize } from "../../../hooks";
 import {
     Play,
     PlaylistAdd,
@@ -28,13 +29,24 @@ export const VideoCard = ({
     const navigate = useNavigate();
     const location = useLocation();
     const { currentUser } = useAuth();
+    const { width } = useWindowSize();
+    const { setToastMessage } = useLoaderOrToast();
+    const events = {
+        onMouseEnter: () => (width > 800 ? setIsHovering(true) : {}),
+        onMouseLeave: () => (width > 800 ? setIsHovering(false) : {}),
+    };
+
+    const handleShare = () => {
+        navigator.clipboard.writeText(window.location.href);
+        setToastMessage({
+            type: "blue",
+            text: "Link Copied!",
+        });
+    };
 
     return (
         <div
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            // onTouchStart={() => setIsHovering(true)}
-            // onTouchEnd={() => setIsHovering(false)}
+            {...events}
             className={`${styles["treeTv-video-card"]} ${
                 canHover && styles["card-can-hover"]
             } card-hover`}
@@ -55,7 +67,7 @@ export const VideoCard = ({
                             className="card-top-image"
                         />
                     )}
-                    {isHovering && (
+                    {(width < 800 || (width > 800 && isHovering)) && (
                         <div
                             className={`${styles["treeTv-card-play"]} flex-center card-overlay-text`}
                         >
@@ -193,14 +205,20 @@ export const VideoCard = ({
                                 >
                                     <PlaylistAdd />
                                 </button>
-                                <button className="icon-btn-ghost-sm">
+                                <button
+                                    onClick={handleShare}
+                                    className="icon-btn-ghost-sm"
+                                >
                                     <Share />
                                 </button>
                             </div>
                         )}
                     </div>
                 </div>
-                <h3 className="card-title text-noWrap text-body-lg">
+                <h3
+                    onClick={() => navigate(`/video/${videos._id}`)}
+                    className="card-title text-noWrap text-body-lg"
+                >
                     {videos.title}
                 </h3>
                 <div
