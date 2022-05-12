@@ -1,7 +1,25 @@
+import { useState } from "react";
 import { Comments } from "../../../../icons";
 import styles from "./commentsBox.module.css";
+import { useAuth } from "../../../../context";
+import { getAvatarLetter } from "../../../../utils";
 
-export const CommentsBox = ({ comments }) => {
+export const CommentsBox = ({ comments, AddComment, videoId }) => {
+    const { currentUser } = useAuth();
+    const [commentInput, setCommentInput] = useState("");
+
+    const updateCommentHandler = () => {
+        const comment = {
+            _id: new Date().getSeconds(),
+            user_name: currentUser.fullName,
+            comment: commentInput,
+            profile_color: currentUser.profile_color,
+        };
+        const newComments = comments.concat(comment);
+        AddComment(videoId, newComments);
+        setCommentInput("");
+    };
+
     return (
         <>
             <div className={`${styles["comment-display"]}`}>
@@ -9,29 +27,50 @@ export const CommentsBox = ({ comments }) => {
                     <Comments />
                     {`${comments.length} comments`}
                 </p>
-                <div className={`${styles["comment-box"]} horizontal-list`}>
-                    <div
-                        style={{ background: `var(--teal-100)` }}
-                        className={`${styles["user-avatar"]} heading-6 avatar-circle-sm flex-center`}
-                    >
-                        A
-                    </div>
-                    <div className={`${styles["comment-input"]} full-width`}>
-                        <div className="full-width">
-                            <input
-                                type="text"
-                                className="full-width text-body-lg"
-                            />
-                            <span className="divider-dark-horizontal" />
-                        </div>
-                        <button className="btn-outlined-teal">clear</button>
-                        <button
-                            className={`${styles["filled-btn"]} btn-filled-teal`}
+                {!!currentUser.encodedToken && (
+                    <div className={`${styles["comment-box"]} horizontal-list`}>
+                        <div
+                            style={{
+                                background: `var(${currentUser.profile_color})`,
+                            }}
+                            className={`${styles["user-avatar"]} heading-6 avatar-circle-sm flex-center`}
                         >
-                            comment
-                        </button>
+                            {getAvatarLetter(currentUser.fullName)}
+                        </div>
+                        <div
+                            className={`${styles["comment-input"]} full-width`}
+                        >
+                            <div className="full-width">
+                                <input
+                                    value={commentInput}
+                                    onChange={(e) =>
+                                        setCommentInput(e.target.value)
+                                    }
+                                    onKeyUp={(e) => {
+                                        if (e.key === "Enter")
+                                            updateCommentHandler();
+                                    }}
+                                    type="text"
+                                    className="full-width text-body-lg"
+                                    placeholder="add your comment here"
+                                />
+                                <span className="divider-dark-horizontal" />
+                            </div>
+                            <button
+                                className="btn-outlined-teal"
+                                onClick={() => setCommentInput("")}
+                            >
+                                clear
+                            </button>
+                            <button
+                                onClick={updateCommentHandler}
+                                className={`${styles["filled-btn"]} btn-filled-teal`}
+                            >
+                                comment
+                            </button>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             {comments.map((item) => {
                 return (
@@ -43,7 +82,7 @@ export const CommentsBox = ({ comments }) => {
                             style={{ background: `var(${item.profile_color})` }}
                             className={`${styles["user-avatar"]} heading-6 avatar-circle-sm flex-center`}
                         >
-                            {item.user_name[0]}
+                            {getAvatarLetter(item.user_name)}
                         </div>
                         <div>
                             <div className="heading-6">{item.user_name}</div>

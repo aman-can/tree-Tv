@@ -12,7 +12,7 @@ export const SingleVideo = () => {
     const { events } = useDraggable(suggestionsBox, {
         applyRubberBandEffect: true,
     });
-    const videoDetails = useSingleVideoData(videoId, 10);
+    const { videoDetails, AddComment } = useSingleVideoData(videoId, 10);
     const { addToWatchlater, watchlater, removeFromWatchlater } =
         useWatchlaterSevices(true);
     return (
@@ -40,7 +40,13 @@ export const SingleVideo = () => {
                     })}
                 </div>
                 <div className={`${styles["comments-section"]}`}>
-                    {<CommentsBox comments={videoDetails.comments} />}
+                    {
+                        <CommentsBox
+                            AddComment={AddComment}
+                            comments={videoDetails.comments}
+                            videoId={videoDetails._id}
+                        />
+                    }
                 </div>
             </div>
         </div>
