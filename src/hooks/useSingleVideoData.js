@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useLoaderOrToast } from "../context";
+import { useAuth, useLoaderOrToast } from "../context";
 
 export const useSingleVideoData = (id, suggestionsLimit) => {
     const [videoDetails, setVideoDetails] = useState({
@@ -16,7 +16,8 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
     });
     const location = useLocation();
     const navigate = useNavigate();
-    const { setIsLoading } = useLoaderOrToast();
+    const { setIsLoading, setToastMessage } = useLoaderOrToast();
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         (async () => {
@@ -36,5 +37,33 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
         })();
     }, [location.pathname]);
 
-    return videoDetails;
+    const AddComment = async (videoId, comments) => {
+        if (currentUser?.encodedToken) {
+            try {
+                setIsLoading(true);
+                const res = await axios.post(
+                    `/api/video/${videoId}/${suggestionsLimit}`,
+                    {
+                        comments,
+                    }
+                );
+                if (res.status === 200) {
+                    setVideoDetails(res.data.video);
+                    setToastMessage({
+                        type: "green",
+                        text: "Comment added",
+                    });
+                }
+            } catch (err) {
+                setToastMessage({
+                    type: "red",
+                    text: err.message,
+                });
+            } finally {
+                setIsLoading(false);
+            }
+        }
+    };
+
+    return { videoDetails, AddComment };
 };
