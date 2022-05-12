@@ -72,7 +72,7 @@ export const useAuthSevices = (setFieldErrors) => {
                         localStorage.setItem("token", res.data.encodedToken);
                         localStorage.setItem("email", res.data.foundUser.email);
                         localStorage.setItem(
-                            "email",
+                            "profile_color",
                             res.data.foundUser.profile_color
                         );
                         localStorage.setItem(

@@ -11,7 +11,7 @@ export const Toast = ({ type, text }) => {
     }, 2500);
 
     return (
-        <div className={`${styles["treeTv-toast"]} toast-left-${type}`}>
+        <div className={`${styles["treeTv-toast"]} toast-right-${type}`}>
             <p className={`${styles["toast-text"]}`}>{text}</p>
         </div>
     );

@@ -26,4 +26,8 @@
     .desc-btns {
         position: absolute;
     }
+
+    .video-title{
+        max-width: 45%;
+    }
 }

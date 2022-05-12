@@ -29,9 +29,9 @@ export const Profile = () => {
                     <div className="modal-body">
                         <div
                             style={{
-                                backgroundColor: `var(--${
-                                    currentUser?.profile_color || "teal"
-                                }-100)`,
+                                backgroundColor: `var(${
+                                    currentUser?.profile_color || "--teal-100"
+                                })`,
                             }}
                             className={`${styles["profile-avatar"]} avatar-circle-lg  flex-center heading-4 margin-auto`}
                         >

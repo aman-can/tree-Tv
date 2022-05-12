@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../auth.module.css";
 import { useAuthSevices } from "../../../hooks";
 import { Edit, Profile } from "../../../icons";
+import { getAvatarLetter } from "../../../utils";
 
 export const Signup = () => {
     const emailRef = useRef();
@@ -12,17 +13,14 @@ export const Signup = () => {
     const [fieldErrors, setFieldErrors] = useState({});
     const [openColorsModal, setOpenColorsModal] = useState(false);
     const { signup } = useAuthSevices(setFieldErrors);
-    const colors = ["pink", "blue", "green", "teal", "yellow"];
+    const colors = [
+        "--pink-100",
+        "--blue-100",
+        "--green-100",
+        "--teal-100",
+        "--yellow-100",
+    ];
 
-    const getAvatarLetter = () => {
-        if (!name.trim()) {
-            return "";
-        }
-        let avatar = name.split(" ").filter((e) => e !== "");
-        avatar = avatar[0][0] + (!!avatar[1] ? avatar[1][0] : "");
-        avatar = avatar.toUpperCase();
-        return avatar;
-    };
     return (
         <div className={`${styles["TreeTv-modal"]} modal-sm`}>
             <div className="modal-dialog">
@@ -52,11 +50,11 @@ export const Signup = () => {
                                         setOpenColorsModal((prev) => !prev)
                                     }
                                     style={{
-                                        backgroundColor: `var(--${color}-100)`,
+                                        backgroundColor: `var(${color})`,
                                     }}
                                     className={`${styles["TreeTv-profile-avatar"]} avatar-circle-lg  flex-center heading-4 margin-auto`}
                                 >
-                                    {getAvatarLetter() || <Profile />}
+                                    {getAvatarLetter(name) || <Profile />}
                                 </div>
                                 <span
                                     className={`${styles["edit-badge"]} number-badge-green`}

@@ -23,6 +23,6 @@ export const users = [
         password: "karishma",
         createdAt: formatDate(),
         updatedAt: formatDate(),
-        profile_color: "pink",
+        profile_color: "--pink-100",
     },
 ];

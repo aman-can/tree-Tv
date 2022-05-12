@@ -54,7 +54,11 @@ export const VideoDetails = ({ videoDetails }) => {
                     </button>
                 </div>
                 <div className="card-header">
-                    <h3 className="card-title">{videoDetails.title}</h3>
+                    <h3
+                        className={`${styles["video-title"]} text-noWrap card-title`}
+                    >
+                        {videoDetails.title}
+                    </h3>
                 </div>
                 <div className="card-body">
                     <p className="card-subtitle">{videoDetails.creator}</p>
