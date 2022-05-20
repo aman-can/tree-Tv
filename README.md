@@ -1,7 +1,7 @@
 <div align="center">
   <img src="/public/logo.png" height="100" width="100" alt="logo"/>
-  <h1>Tree Tv</h1>
-    <p>Do you have any question about tree and plants? <a href="https://tree-tv.vercel.app/">Tree Tv </a> is for you! It's the Video Library that answers all your questions! Even if you don't have any questions and just want to admire the beauty of the plants, come to the tree tv.</p>
+  <h1><a href="https://tree-tv.vercel.app/">Tree Tv</a></h1>
+    <p>Tree Tv is where you can watch all the videos related to plants, want to know that how to take care of a plants or if that plants is safe to touch or not, we have covered it all.</p>
  </div>
 
 ## How to run the app locally?
