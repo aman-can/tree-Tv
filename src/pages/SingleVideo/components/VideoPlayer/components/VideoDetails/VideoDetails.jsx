@@ -11,7 +11,7 @@ import { useAuth, useLoaderOrToast } from "../../../../../../context";
 
 export const VideoDetails = ({ videoDetails }) => {
     const { liked, likeVideo, unlikeVideo } = useLikeSevices(true);
-    const isLiked = liked.some((item) => item._id === videoDetails._id);
+    const isLiked = liked.some(item => item._id === videoDetails._id);
     const navigate = useNavigate();
     const location = useLocation();
     const { currentUser } = useAuth();
@@ -34,12 +34,10 @@ export const VideoDetails = ({ videoDetails }) => {
         <>
             <div className={`${styles["video-details"]} card`}>
                 <div
-                    className={`${styles["desc-btns"]} card-badge-green horizontal-list`}
-                >
+                    className={`${styles["desc-btns"]} card-badge-green horizontal-list`}>
                     <button
                         onClick={() => handleLike()}
-                        className="btn-outlined-teal"
-                    >
+                        className="btn-outlined-teal">
                         {isLiked ? "liked" : "like"}
                         {isLiked ? <LikedFilled /> : <Liked />}
                     </button>
@@ -54,8 +52,7 @@ export const VideoDetails = ({ videoDetails }) => {
                                       replace: true,
                                   });
                         }}
-                        className="btn-outlined-teal"
-                    >
+                        className="btn-outlined-teal">
                         Save <PlaylistAdd />
                     </button>
                     <button
@@ -66,21 +63,20 @@ export const VideoDetails = ({ videoDetails }) => {
                                 text: "Link Copied!",
                             });
                         }}
-                        className="btn-outlined-teal"
-                    >
+                        className="btn-outlined-teal">
                         share <Share />
                     </button>
                 </div>
                 <div className="card-header">
                     <h3
-                        className={`${styles["video-title"]} text-noWrap card-title`}
-                    >
+                        className={`${styles["video-title"]} text-noWrap card-title`}>
                         {videoDetails.title}
                     </h3>
                 </div>
                 <div className="card-body">
                     <p className="card-subtitle">{videoDetails.creator}</p>
-                    <p className="card-text text-gutterBottom">
+                    <p
+                        className={`${styles["description"]} card-text text-gutterBottom`}>
                         {videoDetails.description}
                     </p>
                     <p className="card-subtitle text-caption">

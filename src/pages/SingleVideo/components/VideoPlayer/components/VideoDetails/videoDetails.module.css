@@ -18,6 +18,10 @@
     min-width: 100%;
 }
 
+.description{
+    max-width: 45rem;
+}
+
 .video-details ~ span {
     border-color: var(--primary-text-color);
 }

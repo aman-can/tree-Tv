@@ -12,6 +12,7 @@ import styles from "./playlistModal.module.css";
 export const PlaylistModal = ({ video }) => {
     useLockBodyScroll();
 
+    const [showInput, setShowInput] = useState(false);
     const {
         playlists,
         createPlaylist,
@@ -19,16 +20,16 @@ export const PlaylistModal = ({ video }) => {
         deleteVideoFromPlaylist,
     } = usePlaylistServices({
         getPlaylist: true,
+        showInput,
     });
 
     const inputRef = useRef();
 
-    const [showInput, setShowInput] = useState(false);
     const { setPlaylistModalVideo } = useLoaderOrToast();
     const { addToWatchlater, watchlater, removeFromWatchlater } =
         useWatchlaterSevices(true);
 
-    const isInWatchlater = watchlater.some((item) => item._id === video._id);
+    const isInWatchlater = watchlater.some(item => item._id === video._id);
 
     const handleWatchlater = () =>
         isInWatchlater
@@ -44,34 +45,31 @@ export const PlaylistModal = ({ video }) => {
               )
             : addVideoToPlaylist(setIsPlaylistLoading, playlistId, video);
 
-    const handleCreatePlaylist = () => {
+    const handleCreatePlaylist = async () => {
         if (inputRef.current.value) {
-            createPlaylist({
+            const playlistId = await createPlaylist({
                 title: inputRef.current.value,
             });
             inputRef.current.value = "";
             setShowInput(false);
+            addVideoToPlaylist(() => {}, playlistId, video);
         }
     };
 
     return (
         <div
             onClick={() => setPlaylistModalVideo({})}
-            className={`${styles["playlist-modal"]} modal-sm`}
-        >
+            className={`${styles["playlist-modal"]} modal-sm`}>
             <div
-                onClick={(e) => e.stopPropagation()}
-                className={`${styles["playlist-modal-dialog"]} modal-dialog`}
-            >
+                onClick={e => e.stopPropagation()}
+                className={`${styles["playlist-modal-dialog"]} modal-dialog`}>
                 <div className={`${styles["playlist-content"]} modal-content`}>
                     <div
-                        className={`${styles["playlist-header"]} modal-header`}
-                    >
+                        className={`${styles["playlist-header"]} modal-header`}>
                         <h1 className="modal-title heading-6">Save to...</h1>
                         <button
                             onClick={() => setPlaylistModalVideo({})}
-                            className="icon-btn-ghost-sm modal-close-btn"
-                        >
+                            className="icon-btn-ghost-sm modal-close-btn">
                             <Cross />
                         </button>
                     </div>
@@ -82,12 +80,12 @@ export const PlaylistModal = ({ video }) => {
                             handleWatchlater={handleWatchlater}
                             isInWatchlater={isInWatchlater}
                         />
-                        {playlists.map((item) => {
+                        {playlists.map(item => {
                             return (
                                 <PlaylistNameChip
                                     handlePlaylist={handlePlaylist}
                                     isInPlaylist={item.videos.some(
-                                        (ele) => ele._id === video._id
+                                        ele => ele._id === video._id
                                     )}
                                     playlist={item}
                                 />
@@ -96,8 +94,7 @@ export const PlaylistModal = ({ video }) => {
                     </div>
 
                     <div
-                        className={`${styles["playlist-footer"]} modal-footer`}
-                    >
+                        className={`${styles["playlist-footer"]} modal-footer`}>
                         {showInput && (
                             <input
                                 ref={inputRef}
@@ -111,16 +108,14 @@ export const PlaylistModal = ({ video }) => {
                             <button
                                 onClick={handleCreatePlaylist}
                                 type="button"
-                                className="btn-filled-teal flex-center margin-auto"
-                            >
+                                className="btn-filled-teal flex-center margin-auto">
                                 Create
                             </button>
                         ) : (
                             <button
                                 onClick={() => setShowInput(true)}
                                 type="button"
-                                className="btn-filled-teal flex-center full-width"
-                            >
+                                className="btn-filled-teal flex-center full-width">
                                 <Playlist /> Create a new playlist
                             </button>
                         )}

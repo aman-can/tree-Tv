@@ -17,9 +17,9 @@ export const CategoriesList = () => {
     const { setIsLoading, setToastMessage } = useLoaderOrToast();
     const { filterDispatch } = useFilter();
 
-    const chipScroll = (scroll) => () => {
+    const chipScroll = scroll => () => {
         categoriesRef.current.scrollLeft += scroll;
-        setscrollX((prev) => prev + scroll);
+        setscrollX(prev => prev + scroll);
         Math.floor(
             categoriesRef.current.scrollWidth - categoriesRef.current.scrollLeft
         ) <= categoriesRef.current.offsetWidth
@@ -63,15 +63,14 @@ export const CategoriesList = () => {
                 type: filterConstants.CLEAR_ALL_FILTERS,
             });
         };
-    }, []);
+    }, [filterDispatch, setIsLoading, setToastMessage]);
 
     return (
         <div className={`${styles["categories-container"]}`}>
             {scrollX !== 0 && (
                 <span
                     onClick={chipScroll(-50)}
-                    className={`${styles["scroll-btn"]} flex-center`}
-                >
+                    className={`${styles["scroll-btn"]} flex-center`}>
                     <LeftArrow />
                 </span>
             )}
@@ -79,10 +78,9 @@ export const CategoriesList = () => {
                 {...events}
                 ref={categoriesRef}
                 className={`${styles["chip-box"]} horizontal-list`}
-                onScroll={scrollCheck}
-            >
+                onScroll={scrollCheck}>
                 <Chip text="All" isActive={active} setActive={setActive} />
-                {categories.map((ele) => (
+                {categories.map(ele => (
                     <Chip
                         key={ele._id}
                         text={ele.categoryName}
@@ -94,8 +92,7 @@ export const CategoriesList = () => {
             {!scrolEnd && (
                 <span
                     onClick={chipScroll(+50)}
-                    className={`${styles["scroll-btn"]} flex-center`}
-                >
+                    className={`${styles["scroll-btn"]} flex-center`}>
                     <RightArrow />
                 </span>
             )}

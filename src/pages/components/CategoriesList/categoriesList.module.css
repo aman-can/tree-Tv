@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .chip-box::-webkit-scrollbar {

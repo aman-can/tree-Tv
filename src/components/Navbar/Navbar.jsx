@@ -25,7 +25,7 @@ import styles from "./navbar.module.css";
 export const Navbar = ({ changeTheme, theme }) => {
     const [drawer, setDrawer] = useState(false);
     const [bodyLock, setBodyLock] = useState(false);
-    const [query, setQuery] = useSearchParams();
+    const [setQuery] = useSearchParams();
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                         type="search"
                         placeholder="Search"
                         className={`${styles["treeTv-search"]}`}
-                        onKeyUp={(e) => {
+                        onKeyUp={e => {
                             if (e.key === "Enter") {
                                 pathname === "/search"
                                     ? setQuery({ text: e.target.value })
@@ -66,16 +66,14 @@ export const Navbar = ({ changeTheme, theme }) => {
                 <div
                     className={`${styles["drawer"]}  ${
                         drawer && styles["drawer-open"]
-                    }`}
-                >
+                    }`}>
                     <ul className="vertical-list">
                         <li
                             onClick={() => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/">
                                 <Home />
                             </Link>
@@ -88,8 +86,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/playlists">
                                 <Playlist />
                             </Link>
@@ -102,8 +99,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/liked-videos">
                                 <Liked />
                             </Link>
@@ -116,8 +112,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/watchlater">
                                 <Watchlater />
                             </Link>
@@ -130,8 +125,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/history">
                                 <History />
                             </Link>
@@ -145,8 +139,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setBodyLock(false);
                                 changeTheme();
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <button className="icon-btn-teal">
                                 {theme === "light" ? (
                                     <DarkMode />
@@ -163,8 +156,7 @@ export const Navbar = ({ changeTheme, theme }) => {
                                 setDrawer(false);
                                 setBodyLock(false);
                             }}
-                            className={`${styles["tooltip"]}`}
-                        >
+                            className={`${styles["tooltip"]}`}>
                             <Link className="icon-btn-teal" to="/user-profile">
                                 <Profile />
                             </Link>
@@ -175,23 +167,20 @@ export const Navbar = ({ changeTheme, theme }) => {
                     </ul>
                 </div>
                 <div
-                    className={`${styles["treeTv-appbar-menu"]} appbar-menu treeTv-hidden`}
-                >
+                    className={`${styles["treeTv-appbar-menu"]} appbar-menu treeTv-hidden`}>
                     <button
                         onClick={() => {
-                            setDrawer((prev) => !prev);
-                            setBodyLock((prev) => !prev);
+                            setDrawer(prev => !prev);
+                            setBodyLock(prev => !prev);
                         }}
-                        className="icon-btn-teal"
-                    >
+                        className="icon-btn-teal">
                         {!drawer ? <MenuClose /> : <MenuOpen />}
                     </button>
                 </div>
             </div>
 
             <div
-                className={`${styles["treeTv-appbar-filler"]} "appbar-fixed-filler"`}
-            ></div>
+                className={`${styles["treeTv-appbar-filler"]} "appbar-fixed-filler"`}></div>
         </>
     );
 };
