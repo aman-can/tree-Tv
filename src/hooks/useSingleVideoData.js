@@ -35,12 +35,19 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
                 setIsLoading(false);
             }
         })();
-    }, [location.pathname]);
+    }, [
+        location.pathname,
+        setIsLoading,
+        setVideoDetails,
+        navigate,
+        suggestionsLimit,
+        id,
+    ]);
 
     const AddComment = async (videoId, comments) => {
         if (currentUser?.encodedToken) {
             try {
-                setIsLoading(true);
+                // setIsLoading(true);
                 const res = await axios.post(
                     `/api/video/${videoId}/${suggestionsLimit}`,
                     {
@@ -60,7 +67,7 @@ export const useSingleVideoData = (id, suggestionsLimit) => {
                     text: err.message,
                 });
             } finally {
-                setIsLoading(false);
+                // setIsLoading(false);
             }
         }
     };

@@ -36,7 +36,7 @@ export const usePlaylistServices = ({
                 }
             })();
         }
-    }, [currentUser]);
+    }, [currentUser, getPlaylist, setIsLoading, setToastMessage]);
 
     useEffect(() => {
         if (currentUser?.encodedToken && getPlaylistVideo) {
@@ -65,9 +65,15 @@ export const usePlaylistServices = ({
                 }
             })();
         }
-    }, [currentUser]);
+    }, [
+        currentUser,
+        setIsLoading,
+        setToastMessage,
+        getPlaylistVideo,
+        playlistId,
+    ]);
 
-    const createPlaylist = async (playlist) => {
+    const createPlaylist = async playlist => {
         if (currentUser?.encodedToken) {
             try {
                 const res = await axios.post(
@@ -85,6 +91,7 @@ export const usePlaylistServices = ({
                         type: "blue",
                         text: "Playlist created",
                     });
+                    return res.data.playlistId;
                 }
             } catch (err) {
                 setToastMessage({
@@ -95,7 +102,7 @@ export const usePlaylistServices = ({
         }
     };
 
-    const deletePlaylist = async (playlistId) => {
+    const deletePlaylist = async playlistId => {
         if (currentUser?.encodedToken) {
             try {
                 const res = await axios.delete(
@@ -143,8 +150,8 @@ export const usePlaylistServices = ({
                 );
                 if (res.status === 201) {
                     setPlaylistVideo(res.data.playlist);
-                    setPlaylists((prev) =>
-                        prev.map((ele) =>
+                    setPlaylists(prev =>
+                        prev.map(ele =>
                             ele._id === res.data.playlist._id
                                 ? res.data.playlist
                                 : ele
@@ -184,8 +191,8 @@ export const usePlaylistServices = ({
                 );
                 if (res.status === 200) {
                     setPlaylistVideo(res.data.playlist);
-                    setPlaylists((prev) =>
-                        prev.map((ele) =>
+                    setPlaylists(prev =>
+                        prev.map(ele =>
                             ele._id === res.data.playlist._id
                                 ? res.data.playlist
                                 : ele
